@@ -1,4 +1,4 @@
-page 50100 Student
+page 50100 "Student Card"
 {
     PageType = Card;
     SourceTable = "Student Information";
@@ -9,7 +9,7 @@ page 50100 Student
     {
         area(content)
         {
-            group(Group)
+            group(General)
             {
                 field("Student ID"; Rec."Student ID")
                 {
@@ -24,10 +24,30 @@ page 50100 Student
                     ApplicationArea = All;
                 }
                 field("Middle Name"; Rec."Middle Name") { }
+                field("Father's Name"; Rec."Father's Name") { }
+                field("Mother's Name"; Rec."Mother's Name") { }
+                field(Status; Rec.Status) { }
+            }
+            group("Personal Information")
+            {
+                field(Age; Rec.Age) { }
                 field("Date of Birth"; Rec.DOB)
                 {
                     ApplicationArea = All;
                 }
+                field(Gender; Rec.Gender)
+                {
+                    ApplicationArea = All;
+                }
+            }
+            group("Address & Contact")
+            {
+
+                field(Address; Rec.Address) { }
+                field(City; Rec.City) { }
+                field(State; Rec.State) { }
+                field("Zip Code"; Rec."Zip Code") { }
+                field(Country; Rec.Country) { }
                 field("Email"; Rec."Email")
                 {
                     ApplicationArea = All;
@@ -36,22 +56,11 @@ page 50100 Student
                 {
                     ApplicationArea = All;
                 }
-
-                field(Gender; Rec.Gender)
-                {
-                    ApplicationArea = All;
-                }
-                field(Address; Rec.Address) { }
-                field(City; Rec.City) { }
-                field(State; Rec.State) { }
-                field("Zip Code"; Rec."Zip Code") { }
-                field(Country; Rec.Country) { }
+            }
+            group(Administration)
+            {
                 field("Enrollment Date"; Rec."Enrollment Date") { }
                 field("Graduation Date"; Rec."Graduation Date") { }
-                field(Age; Rec.Age) { }
-                field(Status; Rec.Status) { }
-                field("Father's Name"; Rec."Father's Name") { }
-                field("Mother's Name"; Rec."Mother's Name") { }
                 field(Faculty; Rec.Faculty) { }
                 field(Department; Rec.Department) { }
                 field("Department Name"; Rec."Department Name") { }

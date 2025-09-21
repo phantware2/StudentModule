@@ -1,9 +1,11 @@
-page 50000 "Students List"
+page 50000 Students
 {
     PageType = List;
     SourceTable = "Student Information";
     ApplicationArea = All;
     UsageCategory = Lists;
+    Editable = false;
+    CardPageId = "Student Card";
 
     layout
     {
