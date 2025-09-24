@@ -1,6 +1,6 @@
 table 50000 "Student Information"
 {
-    DataClassification = ToBeClassified;
+    DataClassification = CustomerContent;
 
     fields
     {
@@ -18,7 +18,7 @@ table 50000 "Student Information"
         }
         field(4; "Middle Name"; Text[50])
         {
-            DataClassification = ToBeClassified;
+            DataClassification = CustomerContent;
         }
         field(5; DOB; Date)
         {
@@ -59,6 +59,7 @@ table 50000 "Student Information"
         field(14; "Enrollment Date"; Date)
         {
             DataClassification = CustomerContent;
+            Editable = false;
         }
         field(15; "Graduation Date"; Date)
         {
@@ -66,51 +67,59 @@ table 50000 "Student Information"
         }
         field(16; Age; Integer)
         {
-            DataClassification = ToBeClassified;
+            DataClassification = CustomerContent;
+            Editable = false;
         }
         field(17; Status; Option)
         {
             OptionMembers = "Processing Admission",Admitted,Probation,Rosticated,Graduated;
+            Editable = false;
         }
         field(18; "Father's Name"; Text[50])
         {
-            DataClassification = ToBeClassified;
+            DataClassification = CustomerContent;
         }
         field(19; "Mother's Name"; Text[50])
         {
-            DataClassification = ToBeClassified;
+            DataClassification = CustomerContent;
         }
         field(20; Faculty; Text[50])
         {
-            DataClassification = ToBeClassified;
+            DataClassification = CustomerContent;
         }
         field(21; Department; Text[50])
         {
-            DataClassification = ToBeClassified;
+            DataClassification = CustomerContent;
         }
         field(22; "Department Name"; Text[100])
         {
-            DataClassification = ToBeClassified;
+            DataClassification = CustomerContent;
+            Editable = false;
         }
         field(23; Program; Text[100])
         {
-            DataClassification = ToBeClassified;
+            DataClassification = CustomerContent;
         }
-        field(24; "Program Name"; Blob)
+        field(24; "Program Name"; Text[100])
         {
-            DataClassification = ToBeClassified;
+            DataClassification = CustomerContent;
+            Editable = false;
         }
-        field(25; Level; Text[20])
+        field(25; Level; Option)
         {
-            DataClassification = ToBeClassified;
+            DataClassification = CustomerContent;
+            OptionMembers = " ","100 Level","200 Level","300 Level","400 Level","500 Level";
+            Editable = false;
         }
         field(26; Semester; Option)
         {
             OptionMembers = "1st Semester","2nd Semester","3rd Semester";
+            Editable = false;
         }
         field(27; "Faculty Name"; Text[100])
         {
-            DataClassification = ToBeClassified;
+            DataClassification = CustomerContent;
+            Editable = false;
         }
     }
 
@@ -120,7 +129,7 @@ table 50000 "Student Information"
         {
             Clustered = true;
         }
-        key(Secondary; "Last Name", "First Name", Program, Level, Faculty)
+        key(Secondary; "Last Name", "First Name", Program, Level, Semester, Faculty)
         {
         }
     }
