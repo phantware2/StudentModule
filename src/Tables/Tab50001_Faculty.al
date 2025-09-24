@@ -1,4 +1,4 @@
-table 50100 Faculty
+table 50001 Faculty
 {
     DataClassification = ToBeClassified;
 

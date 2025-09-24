@@ -1,4 +1,4 @@
-table 50200 Department
+table 50002 Department
 {
     DataClassification = ToBeClassified;
 
