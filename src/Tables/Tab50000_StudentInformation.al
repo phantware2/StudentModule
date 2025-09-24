@@ -121,6 +121,10 @@ table 50000 "Student Information"
             DataClassification = CustomerContent;
             Editable = false;
         }
+        field(28; "Full Name"; Text[550])
+        {
+            DataClassification = ToBeClassified;
+        }
     }
 
     keys

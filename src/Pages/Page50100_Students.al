@@ -27,6 +27,10 @@ page 50100 "Student Card"
                     ShowMandatory = true;
                     NotBlank = true;
                 }
+                field("Full Name"; Rec."Full Name")
+                {
+                    Editable = false;
+                }
                 field("Middle Name"; Rec."Middle Name") { }
                 field(Gender; Rec.Gender)
                 {
@@ -79,12 +83,14 @@ page 50100 "Student Card"
                     ApplicationArea = All;
                     ShowMandatory = true;
                     NotBlank = true;
+                    ExtendedDatatype = EMail;
                 }
                 field("Phone Number"; Rec."Phone")
                 {
                     ApplicationArea = All;
                     ShowMandatory = true;
                     NotBlank = true;
+                    ExtendedDatatype = PhoneNo;
                 }
             }
             group("Academic Information")
