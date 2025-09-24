@@ -1,33 +1,25 @@
-page 50002 "Faculty"
+page 50003 "Faculty Card"
 {
-    Caption = 'Faculty';
-    PageType = List;
-    UsageCategory = Lists;
+    PageType = Card;
     ApplicationArea = All;
+    UsageCategory = Administration;
     SourceTable = Faculty;
-    Editable = false;
-    CardPageId = "Faculty Card";
 
     layout
     {
         area(Content)
         {
-            repeater(Group)
+            group(GroupName)
             {
                 field(Code; Rec.Code)
                 {
-                    ApplicationArea = All;
+                    ApplicationArea = all;
                 }
                 field(Name; Rec.Name)
                 {
                     ApplicationArea = All;
                 }
-
             }
-        }
-        area(Factboxes)
-        {
-
         }
     }
 
@@ -37,13 +29,15 @@ page 50002 "Faculty"
         {
             action(ActionName)
             {
-                ApplicationArea = All;
 
-                trigger OnAction();
+                trigger OnAction()
                 begin
 
                 end;
             }
         }
     }
+
+    var
+        myInt: Integer;
 }
