@@ -15,10 +15,12 @@ table 50200 Department
         field(3; "Faculty Code"; Code[20])
         {
             DataClassification = ToBeClassified;
+            TableRelation = Faculty.Code;
         }
         field(4; "Faculty Name"; Code[200])
         {
             DataClassification = ToBeClassified;
+            Editable = false;
         }
     }
 
