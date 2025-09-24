@@ -108,6 +108,10 @@ table 50000 "Student Information"
         {
             OptionMembers = "1st Semester","2nd Semester","3rd Semester";
         }
+        field(27; "Faculty Name"; Text[100])
+        {
+            DataClassification = ToBeClassified;
+        }
     }
 
     keys
@@ -115,6 +119,9 @@ table 50000 "Student Information"
         key(PK; "Student ID")
         {
             Clustered = true;
+        }
+        key(Secondary; "Last Name", "First Name", Program, Level, Faculty)
+        {
         }
     }
 }

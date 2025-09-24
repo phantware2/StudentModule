@@ -24,30 +24,33 @@ page 50100 "Student Card"
                     ApplicationArea = All;
                 }
                 field("Middle Name"; Rec."Middle Name") { }
-                field("Father's Name"; Rec."Father's Name") { }
-                field("Mother's Name"; Rec."Mother's Name") { }
-                field(Status; Rec.Status) { }
-            }
-            group("Personal Information")
-            {
-                field(Age; Rec.Age) { }
-                field("Date of Birth"; Rec.DOB)
-                {
-                    ApplicationArea = All;
-                }
                 field(Gender; Rec.Gender)
                 {
                     ApplicationArea = All;
                 }
+                field("Enrollment Date"; Rec."Enrollment Date") { }
+                field(Status; Rec.Status) { }
+                field(Program; Rec.Program) { }
+                field("Program Name"; Rec."Program Name") { }
             }
-            group("Address & Contact")
+            group("Personal Information")
+            {
+                field("Date of Birth"; Rec.DOB)
+                {
+                    ApplicationArea = All;
+                }
+                field(Age; Rec.Age) { }
+                field(Country; Rec.Country) { }
+                field("Father's Name"; Rec."Father's Name") { }
+                field("Mother's Name"; Rec."Mother's Name") { }
+            }
+            group("Contact Information")
             {
 
                 field(Address; Rec.Address) { }
                 field(City; Rec.City) { }
                 field(State; Rec.State) { }
                 field("Zip Code"; Rec."Zip Code") { }
-                field(Country; Rec.Country) { }
                 field("Email"; Rec."Email")
                 {
                     ApplicationArea = All;
@@ -57,15 +60,13 @@ page 50100 "Student Card"
                     ApplicationArea = All;
                 }
             }
-            group(Administration)
+            group("Academic Information")
             {
-                field("Enrollment Date"; Rec."Enrollment Date") { }
-                field("Graduation Date"; Rec."Graduation Date") { }
                 field(Faculty; Rec.Faculty) { }
+                field("Faculty Name"; Rec."Faculty Name") { }
                 field(Department; Rec.Department) { }
                 field("Department Name"; Rec."Department Name") { }
-                field(Program; Rec.Program) { }
-                field("Program Name"; Rec."Program Name") { }
+                field("Graduation Date"; Rec."Graduation Date") { }
                 field(Level; Rec.Level) { }
                 field(Semester; Rec.Semester) { }
             }
