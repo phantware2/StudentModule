@@ -1,22 +1,17 @@
-page 50004 Department
+page 50005 "Department Card"
 {
-    Caption = 'PageName';
-    PageType = List;
-    UsageCategory = Lists;
+    PageType = Card;
     ApplicationArea = All;
+    UsageCategory = Administration;
     SourceTable = Department;
 
     layout
     {
         area(Content)
         {
-            repeater(Group)
+            group(GroupName)
             {
                 field(Code; Rec.Code)
-                {
-                    ApplicationArea = All;
-                }
-                field(Name; Rec.Name)
                 {
                     ApplicationArea = All;
                 }

@@ -1,0 +1,29 @@
+page 50004 Department
+{
+    PageType = List;
+    UsageCategory = Lists;
+    ApplicationArea = All;
+    SourceTable = Department;
+    Editable = false;
+    CardPageId = "Department Card";
+
+    layout
+    {
+        area(Content)
+        {
+            repeater(Group)
+            {
+                field(Code; Rec.Code)
+                {
+                    ApplicationArea = All;
+                }
+                field(Name; Rec.Name)
+                {
+                    ApplicationArea = All;
+                }
+                field("Faculty Code"; Rec."Faculty Code") { ApplicationArea = All; }
+                field("Faculty Name"; Rec."Faculty Name") { ApplicationArea = All; }
+            }
+        }
+    }
+}
