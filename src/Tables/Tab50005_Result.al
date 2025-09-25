@@ -18,11 +18,45 @@ table 50005 Result
         {
             DataClassification = ToBeClassified;
         }
+        field(4; Level; Enum Level)
+        {
+            DataClassification = ToBeClassified;
+        }
+        field(5; Semester; Enum Semester)
+        {
+            DataClassification = ToBeClassified;
+        }
+        field(6; Score; Decimal)
+        {
+            DataClassification = ToBeClassified;
+        }
+        field(7; Grade; Enum Grade)
+        {
+            DataClassification = ToBeClassified;
+        }
+        field(8; "Department Code"; Code[20])
+        {
+            DataClassification = ToBeClassified;
+            TableRelation = Department.Code;
+        }
+        field(9; "Department Name"; Text[200])
+        {
+            DataClassification = ToBeClassified;
+        }
+        field(10; "Faculty Code"; Code[20])
+        {
+            DataClassification = ToBeClassified;
+            TableRelation = Faculty.Code;
+        }
+        field(11; "Faculty Name"; Text[200])
+        {
+            DataClassification = ToBeClassified;
+        }
     }
 
     keys
     {
-        key(Key1; MyField)
+        key(PK; "Student ID", "Course Code")
         {
             Clustered = true;
         }
