@@ -16,6 +16,16 @@ table 50002 Department
         {
             DataClassification = ToBeClassified;
             TableRelation = Faculty.Code;
+
+            trigger OnValidate()
+            var
+                Faculty: Record Faculty;
+            begin
+                if Faculty.Get("Faculty Code") then begin
+                    "Faculty Name" := Faculty.Name
+                end else
+                    "Faculty Name" := ' ';
+            end;
         }
         field(4; "Faculty Name"; Code[200])
         {
