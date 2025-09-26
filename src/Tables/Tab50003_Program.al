@@ -31,10 +31,9 @@ table 50003 Program
         {
             DataClassification = ToBeClassified;
         }
-        field(7; Level; Option)
+        field(7; Level; Enum Level)
         {
             DataClassification = ToBeClassified;
-            OptionMembers = " ","100 Level","200 Level","300 Level","400 Level","500 Level";
         }
     }
 
