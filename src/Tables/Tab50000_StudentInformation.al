@@ -70,9 +70,8 @@ table 50000 "Student Information"
             DataClassification = CustomerContent;
             Editable = false;
         }
-        field(17; Status; Option)
+        field(17; Status; Enum Status)
         {
-            OptionMembers = "Processing Admission",Admitted,Probation,Rosticated,Graduated;
             Editable = false;
         }
         field(18; "Father's Name"; Text[50])
@@ -105,15 +104,13 @@ table 50000 "Student Information"
             DataClassification = CustomerContent;
             Editable = false;
         }
-        field(25; Level; Option)
+        field(25; Level; Enum Level)
         {
             DataClassification = CustomerContent;
-            OptionMembers = " ","100 Level","200 Level","300 Level","400 Level","500 Level";
             Editable = false;
         }
-        field(26; Semester; Option)
+        field(26; Semester; Enum Semester)
         {
-            OptionMembers = "1st Semester","2nd Semester","3rd Semester";
             Editable = false;
         }
         field(27; "Faculty Name"; Text[100])
