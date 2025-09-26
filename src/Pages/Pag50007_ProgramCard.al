@@ -28,7 +28,7 @@ page 50007 "Program Card"
                 {
                     ApplicationArea = All;
                 }
-                field(Faculty; Rec.Faculty) { ApplicationArea}
+                field(Faculty; Rec.Faculty) { ApplicationArea = All; }
                 field("Faculty Name"; Rec."Faculty Name")
                 {
                     ApplicationArea = All;
