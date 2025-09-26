@@ -4,12 +4,14 @@ page 50010 Results
     ApplicationArea = All;
     UsageCategory = Lists;
     SourceTable = Result;
+    CardPageId = "Result Card";
+    Editable = false;
 
     layout
     {
         area(Content)
         {
-            repeater(GroupName)
+            repeater(Group)
             {
                 field("Student ID"; Rec."Student ID")
                 {
