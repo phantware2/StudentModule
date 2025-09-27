@@ -17,19 +17,39 @@ table 50003 Program
         {
             DataClassification = ToBeClassified;
             TableRelation = Department.Code;
+
+            trigger OnValidate()
+            var
+                DepartmentRecord: Record Department;
+            begin
+                If DepartmentRecord.Get(Department) then begin
+                    "Department Name" := DepartmentRecord.Name;
+                    Faculty := DepartmentRecord."Faculty Code";
+                    "Faculty Name" := DepartmentRecord."Faculty Name";
+                end else begin
+                    "Department Name" := '';
+                    Faculty := '';
+                    "Faculty Name" := '';
+                end
+
+            end;
+
         }
         field(4; "Department Name"; Text[200])
         {
             DataClassification = ToBeClassified;
+            Editable = false;
         }
         field(5; Faculty; Code[20])
         {
             DataClassification = ToBeClassified;
             TableRelation = Faculty.Code;
+            Editable = false;
         }
         field(6; "Faculty Name"; Text[200])
         {
             DataClassification = ToBeClassified;
+            Editable = false;
         }
         field(7; Level; Enum Level)
         {
@@ -39,7 +59,7 @@ table 50003 Program
 
     keys
     {
-        key(PK; Code)
+        key(PK; Code, Level)
         {
             Clustered = true;
         }

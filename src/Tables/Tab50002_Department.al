@@ -41,4 +41,9 @@ table 50002 Department
             Clustered = true;
         }
     }
+    fieldgroups
+    {
+        fieldgroup(Brick; Code, Name, "Faculty Code", "Faculty Name") { }
+        fieldgroup(Dropdown; Code, Name, "Faculty Code", "Faculty Name") { }
+    }
 }
