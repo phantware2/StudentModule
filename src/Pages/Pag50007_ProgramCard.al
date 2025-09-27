@@ -1,7 +1,6 @@
 page 50007 "Program Card"
 {
     PageType = Card;
-    ApplicationArea = All;
     UsageCategory = Administration;
     SourceTable = Program;
 

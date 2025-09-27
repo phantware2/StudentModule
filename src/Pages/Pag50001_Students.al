@@ -2,7 +2,6 @@ page 50001 "Student Card"
 {
     PageType = Card;
     SourceTable = "Student Information";
-    ApplicationArea = All;
     Caption = 'Student Card';
 
     layout

@@ -1,7 +1,6 @@
 page 50011 "Result Card"
 {
     PageType = Card;
-    ApplicationArea = All;
     UsageCategory = Administration;
     SourceTable = Result;
 

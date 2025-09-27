@@ -1,7 +1,6 @@
 page 50005 "Department Card"
 {
     PageType = Card;
-    ApplicationArea = All;
     UsageCategory = Administration;
     SourceTable = Department;
 
@@ -12,6 +11,10 @@ page 50005 "Department Card"
             group(GroupName)
             {
                 field(Code; Rec.Code)
+                {
+                    ApplicationArea = All;
+                }
+                field(Name; Rec.Name)
                 {
                     ApplicationArea = All;
                 }

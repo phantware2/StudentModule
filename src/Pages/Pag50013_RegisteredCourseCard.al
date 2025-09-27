@@ -1,7 +1,6 @@
 page 50013 "Registered Course Card"
 {
     PageType = Card;
-    ApplicationArea = All;
     UsageCategory = Administration;
     SourceTable = "Registered Course";
 
