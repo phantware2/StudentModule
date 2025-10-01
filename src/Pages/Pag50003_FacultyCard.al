@@ -1,7 +1,6 @@
 page 50003 "Faculty Card"
 {
     PageType = Card;
-    UsageCategory = Administration;
     SourceTable = Faculty;
 
     layout

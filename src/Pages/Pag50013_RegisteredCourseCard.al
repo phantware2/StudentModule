@@ -1,7 +1,6 @@
 page 50013 "Registered Course Card"
 {
     PageType = Card;
-    UsageCategory = Administration;
     SourceTable = "Registered Course";
 
     layout

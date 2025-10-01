@@ -1,7 +1,6 @@
 page 50005 "Department Card"
 {
     PageType = Card;
-    UsageCategory = Administration;
     SourceTable = Department;
 
     layout

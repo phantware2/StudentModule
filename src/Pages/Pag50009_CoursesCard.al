@@ -1,7 +1,6 @@
 page 50009 "Courses Card"
 {
     PageType = Card;
-    UsageCategory = Administration;
     SourceTable = Courses;
 
     layout
