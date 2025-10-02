@@ -4,7 +4,7 @@ table 50000 "Student Information"
 
     fields
     {
-        field(1; "Student ID"; Integer)
+        field(1; "Student ID"; Code[20])
         {
             DataClassification = CustomerContent;
         }
@@ -23,6 +23,22 @@ table 50000 "Student Information"
         field(5; DOB; Date)
         {
             DataClassification = CustomerContent;
+
+            trigger OnValidate()
+            var
+                StudentAge: Integer;
+            begin
+                // StudentAge := DOB - Today();
+                // Age := StudentAge div 365;
+                // Age := CalculateAge(DOB, Today());
+                // Age := Date2DMY(Today(), 3) - Date2DMY(DOB, 3);
+                If DOB > Today() then
+                    Error('Date of Birth cannot be a future date.');
+                If DOB <> 0D then
+                    Age := Date2DMY(Today(), 3) - Date2DMY(DOB, 3)
+                else
+                    Age := 0;
+            end;
         }
         field(6; Gender; Option)
         {
@@ -134,4 +150,17 @@ table 50000 "Student Information"
         {
         }
     }
+
+
+    trigger OnInsert()
+    var
+        NoSeriesMgt: Codeunit "No. Series";
+        salesSetup: Record "Sales & Receivables Setup";
+    begin
+        salesSetup.Get();
+        if "Student ID" = '' then begin
+            "Student ID" := NoSeriesMgt.GetNextNo('STUDENTID');
+            // "Student ID" := NoSeriesMgt.GetNextNo(salesSetup."Customer Nos.");
+        end;
+    end;
 }
