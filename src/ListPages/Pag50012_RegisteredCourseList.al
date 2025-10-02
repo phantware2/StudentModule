@@ -4,8 +4,6 @@ page 50012 "Registered Course List"
     ApplicationArea = All;
     UsageCategory = Lists;
     SourceTable = "Registered Course";
-    CardPageId = "Registered Course Card";
-    Editable = false;
 
     layout
     {
