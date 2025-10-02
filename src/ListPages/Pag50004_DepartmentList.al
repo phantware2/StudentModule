@@ -4,8 +4,6 @@ page 50004 Department
     UsageCategory = Lists;
     ApplicationArea = All;
     SourceTable = Department;
-    Editable = false;
-    CardPageId = "Department Card";
 
     layout
     {

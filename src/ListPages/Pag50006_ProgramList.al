@@ -4,8 +4,6 @@ page 50006 Programs
     ApplicationArea = All;
     UsageCategory = Lists;
     SourceTable = Program;
-    CardPageId = "Program Card";
-    Editable = false;
 
     layout
     {

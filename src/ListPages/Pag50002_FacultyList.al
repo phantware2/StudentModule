@@ -5,8 +5,6 @@ page 50002 Faculty
     UsageCategory = Lists;
     ApplicationArea = All;
     SourceTable = Faculty;
-    Editable = false;
-    CardPageId = "Faculty Card";
 
     layout
     {

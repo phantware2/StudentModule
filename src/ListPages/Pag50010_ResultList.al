@@ -4,8 +4,6 @@ page 50010 Results
     ApplicationArea = All;
     UsageCategory = Lists;
     SourceTable = Result;
-    CardPageId = "Result Card";
-    Editable = false;
 
     layout
     {
