@@ -19,7 +19,7 @@ page 50006 Programs
                 {
                     ApplicationArea = All;
                 }
-                field(Level; Rec.Level)
+                field(Department; Rec.Department)
                 {
                     ApplicationArea = All;
                 }
@@ -27,7 +27,15 @@ page 50006 Programs
                 {
                     ApplicationArea = All;
                 }
+                field(Faculty; Rec.Faculty)
+                {
+                    ApplicationArea = All;
+                }
                 field("Faculty Name"; Rec."Faculty Name")
+                {
+                    ApplicationArea = All;
+                }
+                field(Level; Rec.Level)
                 {
                     ApplicationArea = All;
                 }
