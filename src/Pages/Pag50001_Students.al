@@ -112,6 +112,11 @@ page 50001 "Student Card"
                 field(Level; Rec.Level) { }
                 field(Semester; Rec.Semester) { }
             }
+            part(Courses; Courses)
+            {
+                ApplicationArea = All;
+                SubPageLink = "Student ID" = FIELD("Student ID");
+            }
         }
     }
 

@@ -1,6 +1,6 @@
 page 50005 Courses
 {
-    PageType = List;
+    PageType = ListPart;
     ApplicationArea = All;
     UsageCategory = Lists;
     SourceTable = Courses;
@@ -20,10 +20,6 @@ page 50005 Courses
                 field("Department Name"; Rec."Department Name") { ApplicationArea = All; }
                 field("Faculty Name"; Rec."Faculty Name") { ApplicationArea = All; }
             }
-        }
-        area(Factboxes)
-        {
-
         }
     }
 
