@@ -1,9 +1,9 @@
-page 50010 Results
+page 50004 Programs
 {
     PageType = List;
     ApplicationArea = All;
     UsageCategory = Lists;
-    SourceTable = Result;
+    SourceTable = Program;
 
     layout
     {
@@ -11,19 +11,27 @@ page 50010 Results
         {
             repeater(Group)
             {
-                field("Student ID"; Rec."Student ID")
+                field(Code; Rec.Code)
                 {
                     ApplicationArea = All;
                 }
-                field("Course Code"; Rec."Course Code")
+                field(Program; Rec.Program)
                 {
                     ApplicationArea = All;
                 }
-                field(Semester; Rec.Semester)
+                field(Department; Rec.Department)
                 {
                     ApplicationArea = All;
                 }
-                field(Grade; Rec.Grade)
+                field("Department Name"; Rec."Department Name")
+                {
+                    ApplicationArea = All;
+                }
+                field(Faculty; Rec.Faculty)
+                {
+                    ApplicationArea = All;
+                }
+                field("Faculty Name"; Rec."Faculty Name")
                 {
                     ApplicationArea = All;
                 }
@@ -31,8 +39,6 @@ page 50010 Results
                 {
                     ApplicationArea = All;
                 }
-                field("Department Name"; Rec."Department Name") { ApplicationArea = All; }
-                field("Faculty Name"; Rec."Faculty Name") { ApplicationArea = All; }
             }
         }
         area(Factboxes)

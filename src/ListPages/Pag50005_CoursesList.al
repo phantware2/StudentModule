@@ -1,4 +1,4 @@
-page 50008 Courses
+page 50005 Courses
 {
     PageType = List;
     ApplicationArea = All;

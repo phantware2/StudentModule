@@ -1,9 +1,9 @@
-page 50006 Programs
+page 50007 "Registered Course List"
 {
     PageType = List;
     ApplicationArea = All;
     UsageCategory = Lists;
-    SourceTable = Program;
+    SourceTable = "Registered Course";
 
     layout
     {
@@ -11,34 +11,21 @@ page 50006 Programs
         {
             repeater(Group)
             {
-                field(Code; Rec.Code)
+                field("Code Code"; Rec."Code Code")
                 {
                     ApplicationArea = All;
                 }
-                field(Program; Rec.Program)
+                field("Course Name"; Rec."Course Name")
                 {
                     ApplicationArea = All;
                 }
-                field(Department; Rec.Department)
-                {
-                    ApplicationArea = All;
-                }
-                field("Department Name"; Rec."Department Name")
-                {
-                    ApplicationArea = All;
-                }
-                field(Faculty; Rec.Faculty)
-                {
-                    ApplicationArea = All;
-                }
+                field("Department Name"; Rec."Department Name") { ApplicationArea = All; }
                 field("Faculty Name"; Rec."Faculty Name")
                 {
                     ApplicationArea = All;
                 }
-                field(Level; Rec.Level)
-                {
-                    ApplicationArea = All;
-                }
+                field(Semester; Rec.Semester) { ApplicationArea = All; }
+                field(Level; Rec.Level) { ApplicationArea = All; }
             }
         }
         area(Factboxes)

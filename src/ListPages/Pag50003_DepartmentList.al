@@ -1,4 +1,4 @@
-page 50004 Department
+page 50003 Department
 {
     PageType = List;
     UsageCategory = Lists;
