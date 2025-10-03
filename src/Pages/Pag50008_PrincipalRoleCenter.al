@@ -53,173 +53,128 @@ page 50008 "Principal Role Center"
     {
         area(embedding)
         {
-            action("Security Groups")
+            action(Students)
             {
                 ApplicationArea = Basic, Suite;
-                Caption = 'Security Groups';
-                RunObject = Page "Security Groups";
-                ToolTip = 'Specify security groups so that you can assign permission sets to multiple users easily. You can use a function to copy all permission sets from an existing security group to your new security group.';
+                RunObject = Page Students;
             }
-            action(Users)
+            action(Courses)
             {
                 ApplicationArea = Basic, Suite;
-                Caption = 'Users';
-                RunObject = Page Users;
-                ToolTip = 'Set up the database users and assign their permission sets to define which database objects, and thereby which UI elements, they have access to, and in which companies. In the User Setup window, administrators can define periods of time during which specified users are able to post, and also specify if the system logs when users are logged on.';
+                RunObject = Page Courses;
             }
-            action("User Review Log")
+            action(RegisteredCourses)
             {
                 ApplicationArea = Basic, Suite;
-                Caption = 'User Review Log';
-                RunObject = Page "Activity Log";
-                RunPageView = where("Table No Filter" = filter(9062));
-                ToolTip = 'Monitor users'' activities in the database by reviewing changes that are made to data in tables that you select to track. Change log entries are chronologically ordered and show changes that are made to the fields on the specified tables. ';
+                RunObject = Page "Registered Course List";
             }
-            action("Permission Sets")
+            action(Faculties)
             {
                 ApplicationArea = Basic, Suite;
-                Caption = 'Permission Sets';
-                RunObject = Page "Permission Sets";
-                ToolTip = 'Define collections of permissions each representing different access rights to certain database objects, and review which permission sets are assigned to users of the database to enable them to perform their tasks in the user interface. Users are assigned permission sets according to the Office 365 subscription plan.';
+                RunObject = Page Faculties;
             }
-            action(Plans)
+            action(Departments)
             {
                 ApplicationArea = Basic, Suite;
-                Caption = 'Plans';
-                RunObject = Page Plans;
-                RunPageMode = View;
-                ToolTip = 'View the details of your Office 365 subscription, including your different user profiles and their assigned licenses, such as the Team Member license. Note that users are created in Office 365 and then imported into Business Central with the Get Users from Office 365 action.';
+                RunObject = Page Departments;
             }
         }
         area(sections)
         {
-            group("User Management")
+            group("Teachers Management")
             {
-                Caption = 'User Management';
-                action(Action30)
+                Caption = 'Teachers Management';
+                action(Teachers)
                 {
                     ApplicationArea = Basic, Suite;
-                    Caption = 'Users';
-                    RunObject = Page Users;
-                    ToolTip = 'View or edit users that will be configured in the database.';
+                    Caption = 'Teachers';
+                    // RunObject = Page Teachers;
                 }
-                action(Action27)
+                action(TeachersAttendance)
                 {
                     ApplicationArea = Basic, Suite;
-                    Caption = 'Plans';
-                    RunObject = Page Plans;
+                    Caption = 'Teacher Attendance';
+                    // RunObject = Page "Teacher Attendance";
                     RunPageMode = View;
-                    ToolTip = 'View subscription plans.';
-                }
-                action(Action29)
-                {
-                    ApplicationArea = Basic, Suite;
-                    Caption = 'User Review Log';
-                    RunObject = Page "Activity Log";
-                    RunPageView = where("Table No Filter" = filter(9062));
-                    ToolTip = 'View a log of users'' activities in the database.';
+                    ToolTip = 'View teacher attendance records.';
                 }
             }
-            group("Permissions Management")
+            group(StudentManagement)
             {
-                Caption = 'Permissions Management';
-
-                action("Security Groups Section")
+                Caption = 'Student Management';
+                action("Students Information")
                 {
                     ApplicationArea = Basic, Suite;
-                    Caption = 'Security Groups';
-                    RunObject = Page "Security Groups";
-                    ToolTip = 'Set up or modify security groups as a fast way of giving users access to the functionality that is relevant to their work.';
+                    Caption = 'Students';
+                    RunObject = Page Students;
                 }
-                action(Action28)
+                action(StudentAttendance)
                 {
                     ApplicationArea = Basic, Suite;
-                    Caption = 'Permission Sets';
-                    RunObject = Page "Permission Sets";
-                    ToolTip = 'View or edit which feature objects that users need to access and set up the related permissions in permission sets that you can assign to the users of the database.';
+                    Caption = 'Student Attendance';
+                    // RunObject = Page "Student Attendance";
+                    RunPageMode = View;
+                    ToolTip = 'View student attendance records.';
                 }
-                action("Permission Set by User")
+                action(Results)
                 {
                     ApplicationArea = Basic, Suite;
-                    Caption = 'Permission Set by User';
-                    RunObject = Page "Permission Set by User";
-                    ToolTip = 'View or edit the available permission sets and apply permission sets to existing users.';
+                    Caption = 'Results';
+                    RunObject = Page Results;
                 }
-                action("Permission Set By Security Group")
+                action("Registered Courses")
                 {
                     ApplicationArea = Basic, Suite;
-                    Caption = 'Permission Set by Security Group';
-                    RunObject = Page "Permission Set By Sec. Group";
-                    ToolTip = 'View or edit the available permission sets and apply permission sets to existing security groups.';
+                    Caption = 'Registered Courses';
+                    RunObject = Page "Registered Course List";
                 }
             }
-            group("App Management")
+            group("Schools Management")
             {
-                Caption = 'App Management';
-                action("Apps")
+                Caption = 'Schools Management';
+                action(Faculty)
                 {
                     ApplicationArea = Basic, Suite;
-                    Caption = 'Apps';
-                    RunObject = Page "AAD Application List";
-                    ToolTip = 'View or edit apps.';
+                    Caption = 'Faculties';
+                    RunObject = Page Faculties;
                 }
-            }
-            group("Business Events")
-            {
-                Caption = 'Business Events';
-
-                action("Subscriptions")
+                action(Department)
                 {
-                    ApplicationArea = All;
-                    Caption = 'Subscriptions';
-                    RunObject = Page "EE Subscription List";
-                    ToolTip = 'View your current Business Event Subscriptions.';
+                    ApplicationArea = Basic, Suite;
+                    Caption = 'Departments';
+                    RunObject = Page Departments;
                 }
-            }
-            group("Data Privacy")
-            {
-                Caption = 'Data Privacy';
-                Image = HumanResources;
-                ToolTip = 'Manage data privacy classifications, and respond to requests from data subjects.';
-                action("Page Data Classifications")
+                action(Programs)
                 {
-                    ApplicationArea = All;
-                    Caption = 'Data Classifications';
-                    RunObject = Page "Data Classification Worksheet";
-                    ToolTip = 'View your current data classifications';
+                    ApplicationArea = Basic, Suite;
+                    Caption = 'Programs';
+                    // RunObject = Page Programs;
                 }
-                action(Classified)
+                action(Course)
                 {
-                    ApplicationArea = All;
-                    Caption = 'Classified Fields';
-                    RunObject = Page "Data Classification Worksheet";
-                    // RunPageView = where("Data Sensitivity" = filter(<> Unclassified));
-                    ToolTip = 'View only classified fields';
+                    ApplicationArea = Basic, Suite;
+                    Caption = 'Courses';
+                    RunObject = Page Courses;
                 }
-                action(Unclassified)
+                action(Semesters)
                 {
-                    ApplicationArea = All;
-                    Caption = 'Unclassified Fields';
-                    RunObject = Page "Data Classification Worksheet";
-                    // RunPageView = where("Data Sensitivity" = const(Unclassified));
-                    ToolTip = 'View only unclassified fields';
+                    ApplicationArea = Basic, Suite;
+                    Caption = 'Semesters';
+                    // RunObject = Page Semesters;
                 }
-                action("Page Data Subjects")
+                action(Levels)
                 {
-                    ApplicationArea = All;
-                    Caption = 'Data Subjects';
-                    RunObject = Page "Data Subject";
-                    ToolTip = 'View your potential data subjects';
+                    ApplicationArea = Basic, Suite;
+                    Caption = 'Levels';
+                    // RunObject = Page Levels;
                 }
-                action("Page Change Log Entries")
+                action(Grades)
                 {
-                    ApplicationArea = All;
-                    Caption = 'Change Log Entries';
-                    RunObject = Page "Change Log Entries";
-                    ToolTip = 'View the log with all the changes in your system';
+                    ApplicationArea = Basic, Suite;
+                    Caption = 'Grades';
+                    // RunObject = Page Grades;
                 }
             }
         }
     }
 }
-
