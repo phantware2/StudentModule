@@ -118,6 +118,16 @@ page 50001 "Student Card"
                 SubPageLink = "Student ID" = FIELD("Student ID");
             }
         }
+
+        area(factboxes)
+        {
+            part(StudentInfoFactBox; "Student Info FactBox")
+            {
+                ApplicationArea = All;
+                SubPageLink = "Student ID" = FIELD("Student ID");
+
+            }
+        }
     }
 
     actions

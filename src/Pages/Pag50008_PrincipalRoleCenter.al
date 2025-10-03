@@ -148,7 +148,7 @@ page 50008 "Principal Role Center"
                 {
                     ApplicationArea = Basic, Suite;
                     Caption = 'Programs';
-                    // RunObject = Page Programs;
+                    RunObject = Page Programs;
                 }
                 action(Course)
                 {
