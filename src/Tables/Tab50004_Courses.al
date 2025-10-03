@@ -39,6 +39,10 @@ table 50004 Courses
         {
             DataClassification = ToBeClassified;
         }
+        field(9; "Student ID"; Code[20])
+        {
+            DataClassification = ToBeClassified;
+        }
     }
 
     keys
