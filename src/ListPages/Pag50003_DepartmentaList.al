@@ -1,10 +1,9 @@
-page 50002 Faculty
+page 50003 Departments
 {
-    Caption = 'Faculty';
     PageType = List;
     UsageCategory = Lists;
     ApplicationArea = All;
-    SourceTable = Faculty;
+    SourceTable = Department;
 
     layout
     {
@@ -20,27 +19,8 @@ page 50002 Faculty
                 {
                     ApplicationArea = All;
                 }
-
-            }
-        }
-        area(Factboxes)
-        {
-
-        }
-    }
-
-    actions
-    {
-        area(Processing)
-        {
-            action(ActionName)
-            {
-                ApplicationArea = All;
-
-                trigger OnAction();
-                begin
-
-                end;
+                field("Faculty Code"; Rec."Faculty Code") { ApplicationArea = All; }
+                field("Faculty Name"; Rec."Faculty Name") { ApplicationArea = All; }
             }
         }
     }
