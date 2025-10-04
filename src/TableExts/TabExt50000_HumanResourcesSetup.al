@@ -6,6 +6,7 @@ tableextension 50000 HumanResourcesSetup extends "Human Resources Setup"
         {
             DataClassification = CustomerContent;
             Caption = 'Student Nos.';
+            TableRelation = "No. Series";
         }
     }
 }
