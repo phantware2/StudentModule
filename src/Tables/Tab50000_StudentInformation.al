@@ -115,12 +115,15 @@ table 50000 "Student Information"
         field(20; Faculty; Text[50])
         {
             DataClassification = CustomerContent;
-            tableRelation = Faculty.Name;
+            tableRelation = Faculty.Code;
+
             trigger OnValidate()
             var
                 FacultyRec: Record Faculty;
             begin
-                if FacultyRec.Get(Faculty) then
+                // FacultyRec.SetRange(Code, Faculty);
+                // If FacultyRec.FindFirst() then begin
+                IF FacultyRec.Get(Faculty) then
                     "Faculty Name" := FacultyRec.Name
                 else
                     "Faculty Name" := '';
@@ -129,7 +132,7 @@ table 50000 "Student Information"
         field(21; Department; Text[50])
         {
             DataClassification = CustomerContent;
-            TableRelation = Department.Name;
+            TableRelation = Department.Code;
             trigger OnValidate()
             var
                 DepartmentRec: Record Department;
@@ -148,15 +151,21 @@ table 50000 "Student Information"
         field(23; Program; Text[100])
         {
             DataClassification = CustomerContent;
-            TableRelation = Program.Name;
+            TableRelation = Program.Code;
             trigger OnValidate()
             var
                 ProgramRec: Record Program;
             begin
-                if ProgramRec.Get(Department) then
+                ProgramRec.SetRange(Code, Program);
+                if ProgramRec.Find() then begin
                     "Program Name" := ProgramRec.Name
-                else
+                    // Level := ProgramRec.Level;
+                end
+                else begin
                     "Program Name" := '';
+                    Level := 0;
+
+                end;
             end;
         }
         field(24; "Program Name"; Text[100])
