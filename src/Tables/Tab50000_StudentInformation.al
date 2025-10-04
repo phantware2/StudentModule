@@ -11,14 +11,26 @@ table 50000 "Student Information"
         field(2; "First Name"; Text[50])
         {
             DataClassification = CustomerContent;
+            trigger OnValidate()
+            begin
+                "Full Name" := "First Name" + ' ' + "Middle Name" + ' ' + "Last Name";
+            end;
         }
         field(3; "Last Name"; Text[50])
         {
             DataClassification = CustomerContent;
+            trigger OnValidate()
+            begin
+                "Full Name" := "First Name" + ' ' + "Middle Name" + ' ' + "Last Name";
+            end;
         }
         field(4; "Middle Name"; Text[50])
         {
             DataClassification = CustomerContent;
+            trigger OnValidate()
+            begin
+                "Full Name" := "First Name" + ' ' + "Middle Name" + ' ' + "Last Name";
+            end;
         }
         field(5; DOB; Date)
         {
@@ -137,6 +149,7 @@ table 50000 "Student Information"
         field(28; "Full Name"; Text[550])
         {
             DataClassification = ToBeClassified;
+            Editable = false;
         }
     }
 

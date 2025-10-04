@@ -20,6 +20,12 @@ page 50001 "Student Card"
                     ShowMandatory = true;
                     NotBlank = true;
                 }
+                field("Middle Name"; Rec."Middle Name")
+                {
+                    ApplicationArea = All;
+                    ShowMandatory = true;
+                    NotBlank = true;
+                }
                 field("Last Name"; Rec."Last Name")
                 {
                     ApplicationArea = All;
@@ -30,22 +36,21 @@ page 50001 "Student Card"
                 {
                     Editable = false;
                 }
-                field("Middle Name"; Rec."Middle Name") { }
                 field(Gender; Rec.Gender)
                 {
                     ApplicationArea = All;
                     ShowMandatory = true;
                     NotBlank = true;
                 }
-                field("Enrollment Date"; Rec."Enrollment Date") { }
-                field(Status; Rec.Status) { }
+                field("Enrollment Date"; Rec."Enrollment Date") { ApplicationArea = All; }
+                field(Status; Rec.Status) { ApplicationArea = All; }
                 field(Program; Rec.Program)
                 {
                     ShowMandatory = true;
                     NotBlank = true;
                     ApplicationArea = All;
                 }
-                field("Program Name"; Rec."Program Name") { }
+                field("Program Name"; Rec."Program Name") { ApplicationArea = All; }
             }
             group("Personal Information")
             {
@@ -55,15 +60,15 @@ page 50001 "Student Card"
                     ShowMandatory = true;
                     NotBlank = true;
                 }
-                field(Age; Rec.Age) { }
+                field(Age; Rec.Age) { ApplicationArea = All; }
                 field(Country; Rec.Country)
                 {
                     ShowMandatory = true;
                     NotBlank = true;
                     ApplicationArea = All;
                 }
-                field("Father's Name"; Rec."Father's Name") { }
-                field("Mother's Name"; Rec."Mother's Name") { }
+                field("Father's Name"; Rec."Father's Name") { ApplicationArea = All; }
+                field("Mother's Name"; Rec."Mother's Name") { ApplicationArea = All; }
             }
             group("Contact Information")
             {
@@ -74,9 +79,9 @@ page 50001 "Student Card"
                     NotBlank = true;
                     ApplicationArea = All;
                 }
-                field(City; Rec.City) { }
-                field(State; Rec.State) { }
-                field("Zip Code"; Rec."Zip Code") { }
+                field(City; Rec.City) { ApplicationArea = All; }
+                field(State; Rec.State) { ApplicationArea = All; }
+                field("Zip Code"; Rec."Zip Code") { ApplicationArea = All; }
                 field("Email"; Rec."Email")
                 {
                     ApplicationArea = All;
@@ -100,17 +105,17 @@ page 50001 "Student Card"
                     NotBlank = true;
                     ApplicationArea = All;
                 }
-                field("Faculty Name"; Rec."Faculty Name") { }
+                field("Faculty Name"; Rec."Faculty Name") { ApplicationArea = All; }
                 field(Department; Rec.Department)
                 {
                     ShowMandatory = true;
                     NotBlank = true;
                     ApplicationArea = All;
                 }
-                field("Department Name"; Rec."Department Name") { }
-                field("Graduation Date"; Rec."Graduation Date") { }
-                field(Level; Rec.Level) { }
-                field(Semester; Rec.Semester) { }
+                field("Department Name"; Rec."Department Name") { ApplicationArea = All; }
+                field("Graduation Date"; Rec."Graduation Date") { ApplicationArea = All; }
+                field(Level; Rec.Level) { ApplicationArea = All; }
+                field(Semester; Rec.Semester) { ApplicationArea = All; }
             }
             part(Courses; Courses)
             {
