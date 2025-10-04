@@ -59,10 +59,12 @@ table 50000 "Student Information"
         field(7; Email; Text[100])
         {
             DataClassification = CustomerContent;
+            ExtendedDatatype = Email;
         }
         field(8; Phone; Text[15])
         {
             DataClassification = CustomerContent;
+            ExtendedDatatype = PhoneNo;
         }
         field(9; Address; Text[100])
         {
@@ -113,10 +115,30 @@ table 50000 "Student Information"
         field(20; Faculty; Text[50])
         {
             DataClassification = CustomerContent;
+            tableRelation = Faculty.Name;
+            trigger OnValidate()
+            var
+                FacultyRec: Record Faculty;
+            begin
+                if FacultyRec.Get(Faculty) then
+                    "Faculty Name" := FacultyRec.Name
+                else
+                    "Faculty Name" := '';
+            end;
         }
         field(21; Department; Text[50])
         {
             DataClassification = CustomerContent;
+            TableRelation = Department.Name;
+            trigger OnValidate()
+            var
+                DepartmentRec: Record Department;
+            begin
+                if DepartmentRec.Get(Department) then
+                    "Department Name" := DepartmentRec.Name
+                else
+                    "Department Name" := '';
+            end;
         }
         field(22; "Department Name"; Text[100])
         {
@@ -126,6 +148,16 @@ table 50000 "Student Information"
         field(23; Program; Text[100])
         {
             DataClassification = CustomerContent;
+            TableRelation = Program.Name;
+            trigger OnValidate()
+            var
+                ProgramRec: Record Program;
+            begin
+                if ProgramRec.Get(Department) then
+                    "Program Name" := ProgramRec.Name
+                else
+                    "Program Name" := '';
+            end;
         }
         field(24; "Program Name"; Text[100])
         {

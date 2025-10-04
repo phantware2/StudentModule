@@ -34,6 +34,7 @@ page 50001 "Student Card"
                 }
                 field("Full Name"; Rec."Full Name")
                 {
+                    ApplicationArea = All;
                     Editable = false;
                 }
                 field(Gender; Rec.Gender)

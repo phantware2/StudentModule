@@ -15,7 +15,7 @@ page 50004 Programs
                 {
                     ApplicationArea = All;
                 }
-                field(Program; Rec.Program)
+                field(Program; Rec.Name)
                 {
                     ApplicationArea = All;
                 }

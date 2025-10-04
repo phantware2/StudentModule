@@ -9,7 +9,7 @@ table 50003 Program
             DataClassification = ToBeClassified;
 
         }
-        field(2; Program; Text[200])
+        field(2; Name; Text[200])
         {
             DataClassification = ToBeClassified;
         }
