@@ -36,7 +36,7 @@ table 50002 Department
 
     keys
     {
-        key(PK; Code)
+        key(PK; Code, Name)
         {
             Clustered = true;
         }

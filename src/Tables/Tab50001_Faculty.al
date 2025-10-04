@@ -16,7 +16,7 @@ table 50001 Faculty
 
     keys
     {
-        key(PK; Code)
+        key(PK; Code, Name)
         {
             Clustered = true;
         }

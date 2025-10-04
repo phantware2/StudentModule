@@ -47,7 +47,7 @@ table 50004 Courses
 
     keys
     {
-        key(PK; Code)
+        key(PK; Code, "Course Title", "Faculty Code", "Department Code", "Student ID")
         {
             Clustered = true;
         }

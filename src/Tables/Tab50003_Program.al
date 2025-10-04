@@ -59,7 +59,7 @@ table 50003 Program
 
     keys
     {
-        key(PK; Code, Level)
+        key(PK; Code, Level, Name)
         {
             Clustered = true;
         }
