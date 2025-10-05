@@ -148,7 +148,7 @@ table 50000 "Student Information"
             DataClassification = CustomerContent;
             Editable = false;
         }
-        field(23; Program; Text[100])
+        field(23; Program; Code[20])
         {
             DataClassification = CustomerContent;
             TableRelation = Program.Code;
@@ -157,7 +157,7 @@ table 50000 "Student Information"
                 ProgramRec: Record Program;
             begin
                 ProgramRec.SetRange(Code, Program);
-                if ProgramRec.Find() then
+                if ProgramRec.FindFirst() then
                     "Program Name" := ProgramRec.Name
                 else
                     "Program Name" := '';
