@@ -9,7 +9,7 @@ page 50007 "Registered Course List"
         {
             repeater(Group)
             {
-                field(Code; Rec.Code)
+                field("Course Code"; Rec."Course Code")
                 {
                     ApplicationArea = All;
                 }
