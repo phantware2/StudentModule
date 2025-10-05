@@ -1,6 +1,6 @@
 page 50005 Courses
 {
-    PageType = ListPart;
+    PageType = List;
     ApplicationArea = All;
     UsageCategory = Lists;
     SourceTable = Courses;

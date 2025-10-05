@@ -4,7 +4,7 @@ table 50006 "Registered Course"
 
     fields
     {
-        field(1; "Code Code"; Code[20])
+        field(1; Code; Code[20])
         {
             DataClassification = ToBeClassified;
         }
@@ -36,11 +36,16 @@ table 50006 "Registered Course"
         {
             DataClassification = ToBeClassified;
         }
+        field(9; "Student ID"; Code[20])
+        {
+            DataClassification = ToBeClassified;
+            TableRelation = "Student Information"."Student ID";
+        }
     }
 
     keys
     {
-        key(PK; "Code Code", "Department Code", Level)
+        key(PK; Code, "Department Code", Level, "Student ID")
         {
             Clustered = true;
         }
