@@ -39,6 +39,14 @@ table 50004 Courses
         {
             DataClassification = ToBeClassified;
         }
+        field(9; Units; Integer)
+        {
+            DataClassification = ToBeClassified;
+        }
+        field(10; Level; Enum Level)
+        {
+            DataClassification = ToBeClassified;
+        }
     }
 
     keys
