@@ -41,6 +41,11 @@ table 50006 "Registered Course"
             DataClassification = ToBeClassified;
             TableRelation = "Student Information"."Student ID";
         }
+        field(10; "Course Code"; Code[20])
+        {
+            DataClassification = ToBeClassified;
+            TableRelation = Courses.Code;
+        }
     }
 
     keys
