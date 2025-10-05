@@ -157,15 +157,10 @@ table 50000 "Student Information"
                 ProgramRec: Record Program;
             begin
                 ProgramRec.SetRange(Code, Program);
-                if ProgramRec.Find() then begin
+                if ProgramRec.Find() then
                     "Program Name" := ProgramRec.Name
-                    // Level := ProgramRec.Level;
-                end
-                else begin
+                else
                     "Program Name" := '';
-                    Level := 0;
-
-                end;
             end;
         }
         field(24; "Program Name"; Text[100])
