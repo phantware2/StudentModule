@@ -1,8 +1,6 @@
 page 50007 "Registered Course List"
 {
-    PageType = List;
-    ApplicationArea = All;
-    UsageCategory = Lists;
+    PageType = ListPart;
     SourceTable = "Registered Course";
 
     layout
@@ -26,11 +24,8 @@ page 50007 "Registered Course List"
                 }
                 field(Semester; Rec.Semester) { ApplicationArea = All; }
                 field(Level; Rec.Level) { ApplicationArea = All; }
+                field("Student ID"; Rec."Student ID") { ApplicationArea = All; }
             }
-        }
-        area(Factboxes)
-        {
-
         }
     }
 

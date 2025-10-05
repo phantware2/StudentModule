@@ -118,7 +118,7 @@ page 50001 "Student Card"
                 field(Level; Rec.Level) { ApplicationArea = All; }
                 field(Semester; Rec.Semester) { ApplicationArea = All; }
             }
-            part(Courses; Courses)
+            part(RegisteredCourses; "Registered Course List")
             {
                 ApplicationArea = All;
                 SubPageLink = "Student ID" = FIELD("Student ID");
