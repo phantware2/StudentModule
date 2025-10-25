@@ -116,32 +116,33 @@ table 50000 "Student Information"
         {
             DataClassification = CustomerContent;
             tableRelation = Faculty.Code;
-
-            trigger OnValidate()
-            var
-                FacultyRec: Record Faculty;
-            begin
-                // FacultyRec.SetRange(Code, Faculty);
-                // If FacultyRec.FindFirst() then begin
-                IF FacultyRec.Get(Faculty) then
-                    "Faculty Name" := FacultyRec.Name
-                else
-                    "Faculty Name" := '';
-            end;
+            Editable = false;
+            // trigger OnValidate()
+            // var
+            //     FacultyRec: Record Faculty;
+            // begin
+            //     // FacultyRec.SetRange(Code, Faculty);
+            //     // If FacultyRec.FindFirst() then begin
+            //     IF FacultyRec.Get(Faculty) then
+            //         "Faculty Name" := FacultyRec.Name
+            //     else
+            //         "Faculty Name" := '';
+            // end;
         }
         field(21; Department; Text[50])
         {
             DataClassification = CustomerContent;
             TableRelation = Department.Code;
-            trigger OnValidate()
-            var
-                DepartmentRec: Record Department;
-            begin
-                if DepartmentRec.Get(Department) then
-                    "Department Name" := DepartmentRec.Name
-                else
-                    "Department Name" := '';
-            end;
+            Editable = false;
+            // trigger OnValidate()
+            // var
+            //     DepartmentRec: Record Department;
+            // begin
+            //     if DepartmentRec.Get(Department) then
+            //         "Department Name" := DepartmentRec.Name
+            //     else
+            //         "Department Name" := '';
+            // end;
         }
         field(22; "Department Name"; Text[100])
         {
@@ -157,10 +158,21 @@ table 50000 "Student Information"
                 ProgramRec: Record Program;
             begin
                 ProgramRec.SetRange(Code, Program);
-                if ProgramRec.FindFirst() then
-                    "Program Name" := ProgramRec.Name
-                else
+                if ProgramRec.FindFirst() then begin
+                    "Program Name" := ProgramRec.Name;
+                    Department := ProgramRec.Department;
+                    "Department Name" := ProgramRec."Department Name";
+                    Faculty := ProgramRec.Faculty;
+                    "Faculty Name" := ProgramRec."Faculty Name";
+                end
+                else begin
                     "Program Name" := '';
+                    Department := '';
+                    "Department Name" := '';
+                    Faculty := '';
+                    "Faculty Name" := '';
+                end;
+
             end;
         }
         field(24; "Program Name"; Text[100])

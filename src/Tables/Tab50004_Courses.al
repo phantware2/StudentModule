@@ -12,7 +12,7 @@ table 50004 Courses
         {
             DataClassification = ToBeClassified;
         }
-        field(3; Semester; Code[20])
+        field(3; Semester; Enum Semester)
         {
             DataClassification = ToBeClassified;
         }

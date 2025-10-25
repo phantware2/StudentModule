@@ -24,7 +24,7 @@ table 50006 "Registered Course"
         {
             DataClassification = ToBeClassified;
         }
-        field(6; "Faculty Name"; Blob)
+        field(6; "Faculty Name"; Text[200])
         {
             DataClassification = ToBeClassified;
         }
@@ -45,6 +45,30 @@ table 50006 "Registered Course"
         {
             DataClassification = ToBeClassified;
             TableRelation = Courses.Code;
+
+            trigger OnValidate()
+            var
+                CourseRec: Record Courses;
+            begin
+                CourseRec.SetRange(Code, "Course Code");
+                if CourseRec.FindFirst() then begin
+                    "Course Name" := CourseRec."Course Title";
+                    "Department Code" := CourseRec."Department Code";
+                    "Department Name" := CourseRec."Department Name";
+                    "Faculty Code" := CourseRec."Faculty Code";
+                    "Faculty Name" := CourseRec."Faculty Name";
+                    Level := CourseRec.Level;
+                    Semester := CourseRec.Semester;
+                end else begin
+                    "Course Name" := '';
+                    "Department Code" := '';
+                    "Department Name" := '';
+                    "Faculty Code" := '';
+                    "Faculty Name" := '';
+                    // Level := Level::'';
+                    // Semester := Semester::'';
+                end;
+            end;
         }
     }
 
