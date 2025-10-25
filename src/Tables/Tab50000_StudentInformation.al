@@ -212,4 +212,5 @@ table 50000 "Student Information"
             "Student ID" := NoSeriesMgt.GetNextNo(HumanResourcesSetup."Student Nos.");
         end;
     end;
+
 }

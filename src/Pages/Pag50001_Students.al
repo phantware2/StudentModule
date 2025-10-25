@@ -141,6 +141,38 @@ page 50001 "Student Card"
         area(processing)
         {
             // Add actions if needed
+            action("Refresh Age")
+            {
+                ApplicationArea = all;
+                Caption = 'Calculate Sales Count';
+                Image = Calculate;
+                Promoted = true;
+                PromotedCategory = Process;
+                trigger OnAction()
+                var
+                    SalesLineRec: Record "Sales Line";
+                    SalesOrderCount: Integer;
+                    SalesQuoteCount: Integer;
+                    SalesInvoiceCount: Integer;
+                    DocumentType: Enum "Sales Document Type";
+                begin
+                    SalesLineRec.Reset();
+                    SalesLineRec.SetRange("Document Type", DocumentType::Order);
+                    SalesOrderCount := SalesLineRec.Count();
+                    SalesLineRec.SetRange("Document Type", DocumentType::Quote);
+                    SalesLineRec.FindSet();
+                    SalesQuoteCount := SalesLineRec.Count();
+                    SalesLineRec.SetRange("Document Type", DocumentType::Invoice);
+                    SalesLineRec.FindSet();
+                    SalesInvoiceCount := SalesLineRec.Count();
+                    Message('Total Sales Orders: %1, %2, %3', SalesOrderCount, SalesQuoteCount, SalesInvoiceCount);
+                    SalesLineRec.Reset();
+                    SalesLineRec.SetRange(Quantity, 7);
+                    Message('Number of sales lines with quantity 7: %1', SalesLineRec.Count());
+                end;
+            }
         }
+
     }
+
 }
