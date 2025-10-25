@@ -167,8 +167,8 @@ page 50001 "Student Card"
                     SalesInvoiceCount := SalesLineRec.Count();
                     Message('Total Sales Orders: %1, %2, %3', SalesOrderCount, SalesQuoteCount, SalesInvoiceCount);
                     SalesLineRec.Reset();
-                    SalesLineRec.SetRange(Quantity, 7);
-                    Message('Number of sales lines with quantity 7: %1', SalesLineRec.Count());
+                    SalesLineRec.SetFilter(Quantity, '>7');
+                    Message('Number of sales lines with quantity > 7: %1', SalesLineRec.Count());
                 end;
             }
         }
