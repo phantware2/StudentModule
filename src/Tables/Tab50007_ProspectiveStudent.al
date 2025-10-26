@@ -4,24 +4,24 @@ table 50007 "Prospective Student"
 
     fields
     {
-        field(1; "ProspectiveStudentID"; Code[20]) { Caption = 'Prospective Student ID'; DataClassification = CustomerContent; }
-        field(2; "FirstName"; Text[50]) { Caption = 'First Name'; DataClassification = CustomerContent; }
-        field(3; "MiddleName"; Text[50]) { Caption = 'Middle Name'; DataClassification = CustomerContent; }
-        field(4; "LastName"; Text[50]) { Caption = 'Last Name'; DataClassification = CustomerContent; }
+        field(1; "ProspectiveStudentID"; Code[20]) { DataClassification = CustomerContent; }
+        field(2; "First Name"; Text[50]) { Caption = 'First Name'; DataClassification = CustomerContent; }
+        field(3; "Middle Name"; Text[50]) { Caption = 'Middle Name'; DataClassification = CustomerContent; }
+        field(4; "Last Name"; Text[50]) { Caption = 'Last Name'; DataClassification = CustomerContent; }
         field(5; "DateOfBirth"; Date) { Caption = 'Date of Birth'; DataClassification = CustomerContent; }
-        field(6; "Gender"; Option) { Caption = 'Gender'; OptionMembers = Male,Female,Other; DataClassification = CustomerContent; }
-        field(7; "Email"; Text[100]) { Caption = 'Email'; DataClassification = CustomerContent; }
-        field(8; "Phone"; Text[30]) { Caption = 'Phone'; DataClassification = CustomerContent; }
-        field(9; "Address"; Text[250]) { Caption = 'Address'; DataClassification = CustomerContent; }
-        field(10; "Nationality"; Text[50]) { Caption = 'Nationality'; DataClassification = CustomerContent; }
-        field(11; "JAMBRegNo"; Text[30]) { Caption = 'JAMB Reg No'; DataClassification = CustomerContent; }
-        field(12; "UTMEScore"; Decimal) { Caption = 'UTME Score'; DataClassification = CustomerContent; }
-        field(13; "PreferredProgramCode"; Code[20]) { Caption = 'Preferred Program'; DataClassification = CustomerContent; }
+        field(6; Gender; Option) { Caption = 'Gender'; OptionMembers = Male,Female,Other; DataClassification = CustomerContent; }
+        field(7; Email; Text[100]) { Caption = 'Email'; DataClassification = CustomerContent; }
+        field(8; Phone; Text[30]) { Caption = 'Phone'; DataClassification = CustomerContent; }
+        field(9; Address; Text[250]) { Caption = 'Address'; DataClassification = CustomerContent; }
+        field(10; Country; Text[50]) { Caption = 'Nationality'; DataClassification = CustomerContent; }
+        field(11; JAMBRegNo; Text[30]) { Caption = 'JAMB Reg No'; DataClassification = CustomerContent; }
+        field(12; UTMEScore; Decimal) { Caption = 'UTME Score'; DataClassification = CustomerContent; }
+        field(13; "Preferred Program Code"; Code[20]) { Caption = 'Preferred Program'; DataClassification = CustomerContent; TableRelation = Program; }
         field(14; "ApplicationStatus"; Enum Status) { Caption = 'Application Status'; DataClassification = CustomerContent; }
-        field(15; "Source"; Option) { Caption = 'Source'; OptionMembers = Portal,WalkIn,Agent; DataClassification = CustomerContent; }
-        field(16; "CreatedBy"; Text[50]) { Caption = 'Created By'; DataClassification = CustomerContent; }
-        field(17; "CreatedDate"; Date) { Caption = 'Created Date'; DataClassification = CustomerContent; }
-        field(18; "ModifiedDate"; Date) { Caption = 'Modified Date'; DataClassification = CustomerContent; }
+        field(15; Source; Option) { Caption = 'Source'; OptionMembers = Portal,WalkIn,Agent; DataClassification = CustomerContent; }
+        field(16; CreatedBy; Text[50]) { Caption = 'Created By'; DataClassification = CustomerContent; }
+        field(17; CreatedDate; Date) { Caption = 'Created Date'; DataClassification = CustomerContent; }
+        field(18; ModifiedDate; Date) { Caption = 'Modified Date'; DataClassification = CustomerContent; }
     }
 
     keys
