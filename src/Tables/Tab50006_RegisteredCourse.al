@@ -2,9 +2,11 @@ table 50006 "Registered Course"
 {
     DataClassification = ToBeClassified;
 
+
+
     fields
     {
-        field(1; Code; Code[20])
+        field(1; "Line No."; Integer)
         {
             DataClassification = ToBeClassified;
         }
@@ -13,20 +15,44 @@ table 50006 "Registered Course"
             DataClassification = ToBeClassified;
             Editable = false;
         }
-        field(3; "Department Code"; Code[20])
+        field(3; Department; Code[20])
         {
             DataClassification = ToBeClassified;
             Editable = false;
+
+            trigger OnValidate()
+            var
+                DepartmentRec: Record Department;
+            begin
+                DepartmentRec.SetRange(Code, Department);
+                if DepartmentRec.FindFirst() then begin
+                    "Department Name" := DepartmentRec.Name;
+                end else begin
+                    "Department Name" := '';
+                end;
+            end;
         }
         field(4; "Department Name"; Text[200])
         {
             DataClassification = ToBeClassified;
             Editable = false;
         }
-        field(5; "Faculty Code"; Code[20])
+        field(5; Faculty; Code[20])
         {
             DataClassification = ToBeClassified;
             Editable = false;
+
+            trigger OnValidate()
+            var
+                FacultyRec: Record Faculty;
+            begin
+                FacultyRec.SetRange(Code, Faculty);
+                if FacultyRec.FindFirst() then begin
+                    "Faculty Name" := FacultyRec.Name;
+                end else begin
+                    "Faculty Name" := '';
+                end;
+            end;
         }
         field(6; "Faculty Name"; Text[200])
         {
@@ -52,7 +78,7 @@ table 50006 "Registered Course"
         field(10; "Course Code"; Code[20])
         {
             DataClassification = ToBeClassified;
-            TableRelation = Courses.Code where("Department Code" = field("Department Code"), "Faculty Code" = field("Faculty Code"));
+            TableRelation = Courses.Code where("Department Code" = field(Department), "Faculty Code" = field(Faculty));
 
             // trigger OnValidate()
             // var
@@ -82,9 +108,12 @@ table 50006 "Registered Course"
 
     keys
     {
-        key(PK; Code, "Department Code", Level, "Student ID")
+        key(PK; "Student ID", Department, Faculty, "Line No.")
         {
             Clustered = true;
+        }
+        key(SK; Level, Department, Faculty, "Student ID")
+        {
         }
     }
 
@@ -115,5 +144,8 @@ table 50006 "Registered Course"
     begin
 
     end;
+
+    VAR
+        PAGE: Page 42;
 
 }

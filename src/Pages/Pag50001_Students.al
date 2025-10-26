@@ -121,7 +121,9 @@ page 50001 "Student Card"
             part(RegisteredCourses; "Registered Course List")
             {
                 ApplicationArea = All;
-                SubPageLink = "Student ID" = FIELD("Student ID");
+                UpdatePropagation = Both;
+                SubPageLink = "Student ID" = FIELD("Student ID"), Faculty = FIELD(Faculty), Department = FIELD(Department);
+
             }
         }
 

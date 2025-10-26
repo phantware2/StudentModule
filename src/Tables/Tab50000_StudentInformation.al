@@ -203,11 +203,11 @@ table 50000 "Student Information"
 
     keys
     {
-        key(PK; "Student ID")
+        key(PK; "Student ID", Department, Faculty)
         {
             Clustered = true;
         }
-        key(Secondary; "Last Name", "First Name", Program, Level, Semester, Faculty)
+        key(Secondary; "Last Name", "First Name", Program, Level, Semester)
         {
         }
     }

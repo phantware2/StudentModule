@@ -2,6 +2,10 @@ page 50007 "Registered Course List"
 {
     PageType = ListPart;
     SourceTable = "Registered Course";
+    AutoSplitKey = true;
+    DelayedInsert = true;
+    MultipleNewLines = true;
+
 
     layout
     {
