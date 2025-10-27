@@ -2,8 +2,6 @@ page 50010 "Prospective Students List"
 {
     Caption = 'Prospective Students List';
     PageType = List;
-    UsageCategory = Lists;
-    ApplicationArea = All;
     SourceTable = "Prospective Student";
 
     layout
