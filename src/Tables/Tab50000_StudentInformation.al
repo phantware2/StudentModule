@@ -35,6 +35,7 @@ table 50000 "Student Information"
         field(5; DOB; Date)
         {
             DataClassification = CustomerContent;
+            Caption = 'Date of Birth';
 
             trigger OnValidate()
             var
@@ -199,6 +200,17 @@ table 50000 "Student Information"
             DataClassification = ToBeClassified;
             Editable = false;
         }
+        field(29; "ProspectiveStudentID"; Code[20])
+        {
+            Caption = 'Prospective Student ID';
+            DataClassification = CustomerContent;
+        }
+        field(30; "Student Type"; Option)
+        {
+            Caption = 'Student Type';
+            DataClassification = CustomerContent;
+            OptionMembers = Undergraduate,Postgraduate,PartTime;
+        }
     }
 
     keys
@@ -207,7 +219,7 @@ table 50000 "Student Information"
         {
             Clustered = true;
         }
-        key(Secondary; "Last Name", "First Name", Program, Level, Semester)
+        key(SK; "Last Name", "First Name", Program, Level, Semester, ProspectiveStudentID)
         {
         }
     }
