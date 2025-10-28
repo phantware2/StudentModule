@@ -1,8 +1,7 @@
 page 50015 "Admission Offers List"
 {
     PageType = List;
-    ApplicationArea = All;
-    UsageCategory = Lists;
+    CardPageId = "Convert Applicant To Student";
     SourceTable = "Admission Offer";
 
     layout
