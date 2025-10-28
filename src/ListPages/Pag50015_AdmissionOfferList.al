@@ -3,6 +3,7 @@ page 50015 "Admission Offers List"
     PageType = List;
     CardPageId = "Convert Applicant To Student";
     SourceTable = "Admission Offer";
+    ApplicationArea = All;
 
     layout
     {

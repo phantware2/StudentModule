@@ -175,6 +175,46 @@ page 50008 "Principal Role Center"
                     // RunObject = Page Grades;
                 }
             }
+            group("Admission Board")
+            {
+                Caption = 'Admission Board';
+                action("Prospective Students")
+                {
+                    ApplicationArea = Basic, Suite;
+                    Caption = 'Prospective Students';
+                    RunObject = Page "Prospective Students List";
+                }
+                action("Exam List")
+                {
+                    ApplicationArea = Basic, Suite;
+                    Caption = 'Exam List';
+                    RunObject = Page "Exam List";
+                }
+                action("Exam Lists")
+                {
+                    ApplicationArea = Basic, Suite;
+                    Caption = 'Exam List';
+                    RunObject = Page "Exam List";
+                }
+                action("Exam Sitting Worksheet")
+                {
+                    ApplicationArea = Basic, Suite;
+                    Caption = 'Exam Sitting Worksheet';
+                    RunObject = Page "Exam Sitting Worksheet";
+                }
+                action("Admission Results")
+                {
+                    ApplicationArea = Basic, Suite;
+                    Caption = 'Admission Results';
+                    // RunObject = Page "Admission Results";
+                }
+                action("Admission Offer")
+                {
+                    ApplicationArea = Basic, Suite;
+                    Caption = 'Admission Offer';
+                    RunObject = Page "Admission Offers List";
+                }
+            }
         }
     }
 }

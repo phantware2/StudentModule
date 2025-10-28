@@ -1,8 +1,6 @@
 page 50016 "Convert Applicant to Student"
 {
     PageType = Card;
-    ApplicationArea = All;
-    UsageCategory = Administration;
     SourceTable = "Admission Offer";
 
     layout
