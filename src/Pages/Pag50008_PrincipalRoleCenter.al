@@ -184,23 +184,17 @@ page 50008 "Principal Role Center"
                     Caption = 'Prospective Students';
                     RunObject = Page "Prospective Students List";
                 }
-                action("Exam List")
-                {
-                    ApplicationArea = Basic, Suite;
-                    Caption = 'Exam List';
-                    RunObject = Page "Exam List";
-                }
-                action("Exam Lists")
-                {
-                    ApplicationArea = Basic, Suite;
-                    Caption = 'Exam List';
-                    RunObject = Page "Exam List";
-                }
                 action("Exam Sitting Worksheet")
                 {
                     ApplicationArea = Basic, Suite;
                     Caption = 'Exam Sitting Worksheet';
                     RunObject = Page "Exam Sitting Worksheet";
+                }
+                action("Exam List")
+                {
+                    ApplicationArea = Basic, Suite;
+                    Caption = 'Exam List';
+                    RunObject = Page "Exam List";
                 }
                 action("Admission Results")
                 {
