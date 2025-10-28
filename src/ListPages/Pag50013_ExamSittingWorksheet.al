@@ -1,6 +1,9 @@
+
 page 50013 "Exam Sitting Worksheet"
 {
     PageType = List;
+    ApplicationArea = All;
+    UsageCategory = Lists;
     SourceTable = "Exam Sitting";
 
     layout
