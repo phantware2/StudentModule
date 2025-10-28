@@ -194,7 +194,7 @@ page 50008 "Principal Role Center"
                 {
                     ApplicationArea = Basic, Suite;
                     Caption = 'Exam List';
-                    RunObject = Page "Exam List";
+                    RunObject = Page "Entrance Exam List";
                 }
                 action("Admission Results")
                 {

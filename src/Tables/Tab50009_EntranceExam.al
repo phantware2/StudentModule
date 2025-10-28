@@ -1,4 +1,4 @@
-table 50009 Exam
+table 50009 "Entrance Exam"
 {
     DataClassification = CustomerContent;
 

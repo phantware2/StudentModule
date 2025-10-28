@@ -1,10 +1,10 @@
-page 50012 "Exam List"
+page 50012 "Entrance Exam List"
 {
-    Caption = 'Exam List';
+    Caption = 'Entrance Exam List';
     PageType = List;
     UsageCategory = Lists;
     ApplicationArea = All;
-    SourceTable = Exam;
+    SourceTable = "Entrance Exam";
 
     layout
     {
