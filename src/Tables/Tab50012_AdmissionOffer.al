@@ -26,7 +26,7 @@ table 50012 "Admission Offer"
             Caption = 'Offer Date';
             DataClassification = CustomerContent;
         }
-        field(5; "Offer Status"; Enum Status)
+        field(5; "Offer Status"; Enum "Offer Status")
         {
             Caption = 'Offer Status';
             DataClassification = CustomerContent;
