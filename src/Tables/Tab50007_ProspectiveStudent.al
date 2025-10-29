@@ -96,6 +96,11 @@ table 50007 "Prospective Student"
             Caption = 'Modified Date';
             DataClassification = CustomerContent;
         }
+        field(19; ApplicationFormPaid; Boolean)
+        {
+            Caption = 'Application Form Paid';
+            DataClassification = CustomerContent;
+        }
     }
 
     keys

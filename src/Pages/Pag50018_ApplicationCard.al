@@ -13,6 +13,10 @@ page 50018 Application
                 {
                     ApplicationArea = All;
                 }
+                field(ProspectiveStudentID; Rec.ProspectiveStudentID)
+                {
+                    ApplicationArea = All;
+                }
                 field("Student Name"; Rec."Student Name")
                 {
                     ApplicationArea = All;
@@ -93,9 +97,11 @@ page 50018 Application
     {
         area(Processing)
         {
-            action(ActionName)
+            action(GetProspectiveStudentInfo)
             {
-
+                ApplicationArea = All;
+                Caption = 'Get Prospective Student Info';
+                ToolTip = 'Fetch and populate prospective student information based on the Prospective Student ID.';
                 trigger OnAction()
                 begin
 
