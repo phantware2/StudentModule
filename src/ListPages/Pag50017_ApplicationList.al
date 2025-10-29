@@ -1,8 +1,8 @@
 page 50017 "Application List"
 {
-    PageType = Card;
+    PageType = List;
     ApplicationArea = All;
-    UsageCategory = Administration;
+    UsageCategory = Lists;
     CardPageId = Application;
     SourceTable = Application;
     Editable = false;
@@ -11,7 +11,7 @@ page 50017 "Application List"
     {
         area(Content)
         {
-            group(GroupName)
+            repeater(Group)
             {
                 field("Application ID"; Rec."Application ID")
                 {
