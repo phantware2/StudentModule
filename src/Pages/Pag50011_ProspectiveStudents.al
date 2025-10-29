@@ -1,10 +1,8 @@
 page 50011 "Prospective Student Card"
 {
     PageType = Card;
-    ApplicationArea = All;
-    UsageCategory = Administration;
     SourceTable = "Prospective Student";
-    CardPageId = "Prospective Students List";
+
 
     layout
     {

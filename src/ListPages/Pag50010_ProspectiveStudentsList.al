@@ -3,6 +3,10 @@ page 50010 "Prospective Students List"
     Caption = 'Prospective Students List';
     PageType = List;
     SourceTable = "Prospective Student";
+    CardPageId = "Prospective Student Card";
+    ApplicationArea = All;
+    UsageCategory = Lists;
+    Editable = false;
 
     layout
     {
