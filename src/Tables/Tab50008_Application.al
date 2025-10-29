@@ -90,12 +90,6 @@ table 50008 Application
             Caption = 'Email Address';
             DataClassification = CustomerContent;
         }
-        field(17; "Course Applied"; Code[20])
-        {
-            Caption = 'Course Applied';
-            DataClassification = CustomerContent;
-            TableRelation = Program;
-        }
         field(18; "UTME Score"; Decimal)
         {
             Caption = 'UTME Score';
@@ -105,6 +99,12 @@ table 50008 Application
         {
             Caption = 'JAMB Registration No';
             DataClassification = CustomerContent;
+        }
+        field(20; "Preferred Program Code"; Code[20])
+        {
+            Caption = 'Preferred Program';
+            DataClassification = CustomerContent;
+            TableRelation = Program;
         }
     }
     keys

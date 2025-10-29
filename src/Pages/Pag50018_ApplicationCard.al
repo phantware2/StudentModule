@@ -1,8 +1,6 @@
 page 50018 Application
 {
     PageType = Card;
-    ApplicationArea = All;
-    UsageCategory = Administration;
     SourceTable = Application;
 
     layout
@@ -36,7 +34,21 @@ page 50018 Application
                     ApplicationArea = All;
                 }
             }
-
+            group("Academic Details")
+            {
+                field("Preferred Program Code"; Rec."Preferred Program Code")
+                {
+                    ApplicationArea = All;
+                }
+                field("UTME Score"; Rec."UTME Score")
+                {
+                    ApplicationArea = All;
+                }
+                field("JAMB Registration No"; Rec."JAMB Registration No")
+                {
+                    ApplicationArea = All;
+                }
+            }
             group("Application Status")
             {
                 field("Application Date"; Rec."Application Date")
