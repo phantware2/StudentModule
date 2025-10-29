@@ -60,7 +60,24 @@ table 50008 Application
         field(11; ApplicationStatus; Option)
         {
             Caption = 'Application Status';
-            OptionMembers = New,UnderReview,Accepted,Rejected,Waitlisted;
+            OptionMembers = New,Submitted,UnderReview,ExamScheduled,ExamCompleted,ScreeningPending,Screened,Qualified,NotQualified,OfferIssued,OfferAccepted,OfferDeclined,Admitted,Rejected,Cancelled;
+            OptionCaption = 'New,Submitted,Under Review,Exam Scheduled,Exam Completed,Screening Pending,Screened,Qualified,Not Qualified,Offer Issued,Offer Accepted,Offer Declined,Admitted,Rejected,Cancelled';
+            DataClassification = CustomerContent;
+        }
+        field(12; "Student Name"; Text[100])
+        {
+            Caption = 'Student Name';
+            DataClassification = CustomerContent;
+        }
+        field(13; "Date of Birth"; Date)
+        {
+            Caption = 'Date of Birth';
+            DataClassification = CustomerContent;
+        }
+        field(14; Gender; Option)
+        {
+            Caption = 'Gender';
+            optionMembers = Male,Female,Other;
             DataClassification = CustomerContent;
         }
     }
