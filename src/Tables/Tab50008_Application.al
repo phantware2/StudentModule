@@ -57,6 +57,12 @@ table 50008 Application
             Caption = 'Submitted Date';
             DataClassification = CustomerContent;
         }
+        field(11; ApplicationStatus; Option)
+        {
+            Caption = 'Application Status';
+            OptionMembers = New,UnderReview,Accepted,Rejected,Waitlisted;
+            DataClassification = CustomerContent;
+        }
     }
 
     keys
