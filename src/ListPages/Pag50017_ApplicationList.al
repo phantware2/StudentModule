@@ -3,7 +3,9 @@ page 50017 "Application List"
     PageType = Card;
     ApplicationArea = All;
     UsageCategory = Administration;
+    CardPageId = Application;
     SourceTable = Application;
+    Editable = false;
 
     layout
     {

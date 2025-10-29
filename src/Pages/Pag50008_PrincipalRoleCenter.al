@@ -184,6 +184,12 @@ page 50008 "Principal Role Center"
                     Caption = 'Prospective Students';
                     RunObject = Page "Prospective Students List";
                 }
+                action(Applications)
+                {
+                    ApplicationArea = Basic, Suite;
+                    Caption = 'Applications';
+                    RunObject = Page "Application List";
+                }
                 action("Exam Sitting Worksheet")
                 {
                     ApplicationArea = Basic, Suite;
