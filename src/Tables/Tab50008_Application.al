@@ -80,8 +80,33 @@ table 50008 Application
             optionMembers = Male,Female,Other;
             DataClassification = CustomerContent;
         }
+        field(15; "Phone Number"; Text[30])
+        {
+            Caption = 'Phone Number';
+            DataClassification = CustomerContent;
+        }
+        field(16; "Email Address"; Text[100])
+        {
+            Caption = 'Email Address';
+            DataClassification = CustomerContent;
+        }
+        field(17; "Course Applied"; Code[20])
+        {
+            Caption = 'Course Applied';
+            DataClassification = CustomerContent;
+            TableRelation = Program;
+        }
+        field(18; "UTME Score"; Decimal)
+        {
+            Caption = 'UTME Score';
+            DataClassification = CustomerContent;
+        }
+        field(19; "JAMB Registration No"; Text[30])
+        {
+            Caption = 'JAMB Registration No';
+            DataClassification = CustomerContent;
+        }
     }
-
     keys
     {
         key(PK; "Application ID") { Clustered = true; }

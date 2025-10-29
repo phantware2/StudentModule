@@ -75,6 +75,7 @@ page 50018 Application
                 }
             }
         }
+    }
 
     actions
     {
