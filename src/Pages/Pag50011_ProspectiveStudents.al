@@ -24,6 +24,7 @@ page 50011 "Prospective Student Card"
                 field(UTMEScore; Rec.UTMEScore) { ApplicationArea = All; }
                 field("Preferred Program Code"; Rec."Preferred Program Code") { ApplicationArea = All; }
                 field(ApplicationStatus; Rec.ApplicationStatus) { ApplicationArea = All; }
+                field(ApplicationFormPaid; Rec.ApplicationFormPaid) { ApplicationArea = All; }
             }
         }
     }

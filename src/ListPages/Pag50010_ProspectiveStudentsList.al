@@ -20,6 +20,7 @@ page 50010 "Prospective Students List"
                 field(Email; Rec.Email) { ApplicationArea = All; }
                 field(Phone; Rec.Phone) { ApplicationArea = All; }
                 field(ApplicationStatus; Rec.ApplicationStatus) { ApplicationArea = All; }
+                field(ApplicationFormPaid; Rec.ApplicationFormPaid) { ApplicationArea = All; }
 
             }
         }
