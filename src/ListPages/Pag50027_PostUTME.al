@@ -1,20 +1,25 @@
-page 50025 "Students Registration"
+page 50027 "Post UTME"
 {
-    Caption = 'Students Registration';
     PageType = List;
     ApplicationArea = All;
     UsageCategory = Lists;
-    SourceTable = "Student Registration";
-    CardPageId = "Student Registraion";
-    Editable = false;
+    SourceTable = "Post UTME";
 
     layout
     {
         area(Content)
         {
-            repeater(Group)
+            repeater(GroupName)
             {
                 field("Registration No."; Rec."Registration No.")
+                {
+                    ApplicationArea = All;
+                }
+                field("UTME No."; Rec."UTME No.")
+                {
+                    ApplicationArea = All;
+                }
+                field("Jamb Reg No."; Rec."Jamb Reg No.")
                 {
                     ApplicationArea = All;
                 }
@@ -38,6 +43,10 @@ page 50025 "Students Registration"
                 {
                     ApplicationArea = All;
                 }
+                field("Utme Score"; Rec."Utme Score")
+                {
+                    ApplicationArea = All;
+                }
             }
         }
         area(Factboxes)
@@ -52,9 +61,8 @@ page 50025 "Students Registration"
         {
             action(ActionName)
             {
-                ApplicationArea = All;
 
-                trigger OnAction();
+                trigger OnAction()
                 begin
 
                 end;

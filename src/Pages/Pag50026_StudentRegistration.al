@@ -1,8 +1,6 @@
 page 50026 "Student Registraion"
 {
     PageType = Card;
-    ApplicationArea = All;
-    UsageCategory = Administration;
     SourceTable = "Student Registration";
 
     layout
