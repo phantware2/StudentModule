@@ -3,6 +3,8 @@ page 50025 "Students Registration"
     Caption = 'Students Registration';
     PageType = List;
     SourceTable = "Student Registration";
+    CardPageId = "Students Registration";
+    Editable = false;
 
     layout
     {
@@ -34,7 +36,6 @@ page 50025 "Students Registration"
                 {
                     ApplicationArea = All;
                 }
-
             }
         }
         area(Factboxes)
