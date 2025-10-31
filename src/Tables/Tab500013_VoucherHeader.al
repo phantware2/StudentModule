@@ -4,16 +4,17 @@ table 50013 "Voucher Header"
 
     fields
     {
-        field(1; "Voucher Type"; Option)
+
+        field(1; "Document No."; Code[20])
+        {
+            Caption = 'Document No.';
+            DataClassification = CustomerContent;
+        }
+        field(2; "Voucher Type"; Option)
         {
             Caption = 'Voucher Type';
             DataClassification = CustomerContent;
             OptionMembers = "Application Fee","Exam Fee","Acceptance Fee","Tuition Fee","Hostel Fee","Other Fees";
-        }
-        field(2; "Document No."; Code[20])
-        {
-            Caption = 'Document No.';
-            DataClassification = CustomerContent;
         }
         field(3; Status; Option)
         {

@@ -79,6 +79,14 @@ page 50020 "Bank Reciept Request"
                 }
             }
         }
+        area(FactBoxes)
+        {
+            part(Attachments; "Doc. Attachment List Factbox")
+            {
+                ApplicationArea = All;
+                SubPageLink = "Table ID" = CONST(Database::"Voucher Header"), "No." = FIELD("Document No.");
+            }
+        }
     }
     actions
     {
