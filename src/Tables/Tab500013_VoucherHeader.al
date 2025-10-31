@@ -158,6 +158,11 @@ table 50013 "Voucher Header"
             Caption = 'Credit Date';
             DataClassification = CustomerContent;
         }
+        field(31; "Receipt Date"; Date)
+        {
+            Caption = 'Receipt Date';
+            DataClassification = CustomerContent;
+        }
     }
     keys
     {
