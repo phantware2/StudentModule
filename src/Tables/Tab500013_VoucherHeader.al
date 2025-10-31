@@ -8,7 +8,7 @@ table 50013 "Voucher Header"
         {
             Caption = 'Voucher Type';
             DataClassification = CustomerContent;
-            OptionMembers = ApplicationFee,ExamFee,AcceptanceFee,TuitionFee,HostelFee,OtherFees;
+            OptionMembers = "Application Fee","Exam Fee","Acceptance Fee","Tuition Fee","Hostel Fee","Other Fees";
         }
         field(2; "Document No."; Code[20])
         {
@@ -20,6 +20,7 @@ table 50013 "Voucher Header"
             Caption = 'Status';
             DataClassification = CustomerContent;
             OptionMembers = Open,"Pending Approval",Released,Cancelled;
+            Editable = false;
         }
         field(4; "Posting Date"; Date)
         {
@@ -30,11 +31,13 @@ table 50013 "Voucher Header"
         {
             Caption = 'Journal Template Name';
             DataClassification = CustomerContent;
+            TableRelation = "Gen. Journal Template".Name;
         }
         field(6; "Journal Batch Name"; Code[10])
         {
             Caption = 'Journal Batch Name';
             DataClassification = CustomerContent;
+            TableRelation = "Gen. Journal Batch".Name where("Journal Template Name" = field("Journal Template Name"));
         }
         field(7; "Bank Name"; Text[50])
         {
@@ -50,21 +53,33 @@ table 50013 "Voucher Header"
         {
             Caption = 'Customer No.';
             DataClassification = CustomerContent;
+            TableRelation = Customer."No.";
+
+            trigger OnValidate()
+            var
+                CustRec: Record Customer;
+            begin
+                if CustRec.Get(Rec."Customer No.") then
+                    "Customer Name" := CustRec.Name;
+            end;
         }
         field(10; "Customer Name"; Text[100])
         {
             Caption = 'Customer Name';
             DataClassification = CustomerContent;
+            Editable = false;
         }
         field(11; "Global Dimension 1 Code"; Code[20])
         {
             Caption = 'Global Dimension 1 Code';
             DataClassification = CustomerContent;
+            TableRelation = "Dimension Value".Code where("Global Dimension No." = const(1));
         }
         field(12; "Global Dimension 2 Code"; Code[20])
         {
             Caption = 'Global Dimension 2 Code';
             DataClassification = CustomerContent;
+            TableRelation = "Dimension Value".Code where("Global Dimension No." = const(2));
         }
         field(13; Narration; Text[100])
         {
@@ -75,22 +90,33 @@ table 50013 "Voucher Header"
         {
             Caption = 'Account No.';
             DataClassification = CustomerContent;
+            TableRelation = "G/L Account"."Account Type" where("No." = field("Account No."));
+
+            trigger OnValidate()
+            var
+                GLAccRec: Record "G/L Account";
+            begin
+                if GLAccRec.Get(Rec."Account No.") then
+                    "Account Name" := GLAccRec.Name;
+            end;
         }
         field(15; "Account Name"; Text[100])
         {
             Caption = 'Account Name';
             DataClassification = CustomerContent;
+            Editable = false;
         }
         field(16; "Responsibility Center"; Code[20])
         {
             Caption = 'Responsibility Center';
             DataClassification = CustomerContent;
+            TableRelation = "Responsibility Center".Code;
         }
         field(17; Nature; Option)
         {
             Caption = 'Nature';
             DataClassification = CustomerContent;
-            OptionMembers = "Cash Advance","Direct Payment","Indirect Payment";
+            OptionMembers = "Direct Payment","Indirect Payment";
         }
         field(18; "Account Type"; Option)
         {
@@ -127,11 +153,21 @@ table 50013 "Voucher Header"
         {
             Caption = 'Prospective Student ID';
             DataClassification = CustomerContent;
+            TableRelation = "Prospective Student".ProspectiveStudentID;
+
+            trigger OnValidate()
+            var
+                ProsStudRec: Record "Prospective Student";
+            begin
+                if ProsStudRec.Get(Rec."ProspectiveStudentID") then
+                    "Full Name" := ProsStudRec."Full Name";
+            end;
         }
         field(25; "Full Name"; Text[100])
         {
             Caption = 'Prospective Student Full Name';
             DataClassification = CustomerContent;
+            Editable = false;
         }
         field(26; "Created By"; Text[50])
         {
@@ -166,7 +202,7 @@ table 50013 "Voucher Header"
     }
     keys
     {
-        key(PK; "Voucher Type", "Document No.")
+        key(PK; "Document No.", "Voucher Type")
         {
             Clustered = true;
         }
