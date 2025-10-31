@@ -34,6 +34,24 @@ page 50010 "Prospective Students List"
     {
         area(Processing)
         {
+            action(ComfirmApplicationPayment)
+            {
+                Caption = 'Confirm Application Payment';
+                Image = Save;
+                trigger OnAction()
+                begin
+                    // Call CU_ApplicantToStudentConverter
+                end;
+            }
+            action(ProcessApplication)
+            {
+                Caption = 'Process Application';
+                Image = Save;
+                trigger OnAction()
+                begin
+                    // Call CU_ApplicantToStudentConverter
+                end;
+            }
             action(ScheduleExam)
             {
                 Caption = 'Schedule Exam';
