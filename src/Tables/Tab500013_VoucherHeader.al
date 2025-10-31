@@ -128,7 +128,36 @@ table 50013 "Voucher Header"
             Caption = 'Prospective Student ID';
             DataClassification = CustomerContent;
         }
-        field(25;)
+        field(25; "Full Name"; Text[100])
+        {
+            Caption = 'Prospective Student Full Name';
+            DataClassification = CustomerContent;
+        }
+        field(26; "Created By"; Text[50])
+        {
+            Caption = 'Created By';
+            DataClassification = CustomerContent;
+        }
+        field(27; "Depositor Name"; Text[100])
+        {
+            Caption = 'Depositor Name';
+            DataClassification = CustomerContent;
+        }
+        field(28; "Paid Date"; Date)
+        {
+            Caption = 'Paid Date';
+            DataClassification = CustomerContent;
+        }
+        field(29; "Bank No."; Code[20])
+        {
+            Caption = 'Bank No.';
+            DataClassification = CustomerContent;
+        }
+        field(30; "Credit Date"; Date)
+        {
+            Caption = 'Credit Date';
+            DataClassification = CustomerContent;
+        }
     }
     keys
     {
