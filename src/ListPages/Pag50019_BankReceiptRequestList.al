@@ -4,6 +4,8 @@ page 50019 "Bank Receipt Requests"
     ApplicationArea = All;
     UsageCategory = Lists;
     SourceTable = "Voucher Header";
+    CardPageId = "Bank Reciept Request";
+    Editable = false;
 
     layout
     {
