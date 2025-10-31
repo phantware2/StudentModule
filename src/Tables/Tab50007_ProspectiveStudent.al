@@ -12,16 +12,31 @@ table 50007 "Prospective Student"
         {
             Caption = 'First Name';
             DataClassification = CustomerContent;
+
+            trigger OnValidate()
+            begin
+                "Full Name" := "First Name" + ' ' + "Middle Name" + ' ' + "Last Name";
+            end;
         }
         field(3; "Middle Name"; Text[50])
         {
             Caption = 'Middle Name';
             DataClassification = CustomerContent;
+
+            trigger OnValidate()
+            begin
+                "Full Name" := "First Name" + ' ' + "Middle Name" + ' ' + "Last Name";
+            end;
         }
         field(4; "Last Name"; Text[50])
         {
             Caption = 'Last Name';
             DataClassification = CustomerContent;
+
+            trigger OnValidate()
+            begin
+                "Full Name" := "First Name" + ' ' + "Middle Name" + ' ' + "Last Name";
+            end;
         }
         field(5; "DateOfBirth"; Date)
         {
@@ -101,8 +116,13 @@ table 50007 "Prospective Student"
             Caption = 'Application Form Paid';
             DataClassification = CustomerContent;
         }
+        field(20; "Full Name"; Text[101])
+        {
+            Caption = 'Full Name';
+            DataClassification = CustomerContent;
+            Editable = false;
+        }
     }
-
     keys
     {
         key(PK; "ProspectiveStudentID") { Clustered = true; }
