@@ -14,6 +14,7 @@ page 50011 "Prospective Student Card"
                 field("First Name"; Rec."First Name") { ApplicationArea = All; }
                 field("Middle Name"; Rec."Middle Name") { ApplicationArea = All; }
                 field("Last Name"; Rec."Last Name") { ApplicationArea = All; }
+                field("Full Name"; Rec."Full Name") { ApplicationArea = All; }
                 field(DateOfBirth; Rec.DateOfBirth) { ApplicationArea = All; }
                 field(Gender; Rec.Gender) { ApplicationArea = All; }
                 field(Email; Rec.Email) { ApplicationArea = All; }

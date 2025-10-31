@@ -131,6 +131,12 @@ table 50007 "Prospective Student"
     fieldgroups
     {
         // Add changes to field groups here
+        fieldgroup(DropDown; "ProspectiveStudentID", "Full Name", Address)
+        {
+        }
+        fieldgroup(Brick; "ProspectiveStudentID", "Full Name", Address)
+        {
+        }
     }
 
     var

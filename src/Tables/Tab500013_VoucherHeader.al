@@ -202,7 +202,7 @@ table 50013 "Voucher Header"
     }
     keys
     {
-        key(PK; "Document No.", "Voucher Type")
+        key(PK; "Voucher Type", "Document No.")
         {
             Clustered = true;
         }
