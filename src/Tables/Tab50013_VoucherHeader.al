@@ -17,7 +17,7 @@ table 50013 "Voucher Header"
         {
             Caption = 'Voucher Type';
             DataClassification = CustomerContent;
-            OptionMembers = "Application Fee","Exam Fee","Acceptance Fee","Tuition Fee","Hostel Fee","Other Fees";
+            OptionMembers = BRR,BPR,BRV,BPV,CRV,CPV,JV;
         }
         field(3; Status; Option)
         {
