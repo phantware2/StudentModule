@@ -1,4 +1,4 @@
-enum 50005 "Offer Status"
+enum 50004 "Offer Status"
 {
     Extensible = true;
 
