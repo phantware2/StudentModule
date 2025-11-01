@@ -1,10 +1,14 @@
-table 50014 "Student Registration"
+table 50015 "Post UTME"
 {
     DataClassification = CustomerContent;
 
     fields
     {
         field(1; "Registration No."; Code[20])
+        {
+            DataClassification = CustomerContent;
+        }
+        field(19; "UTME No."; Code[20])
         {
             DataClassification = CustomerContent;
         }
@@ -17,6 +21,10 @@ table 50014 "Student Registration"
             DataClassification = CustomerContent;
         }
         field(4; "Middle Name"; Text[200])
+        {
+            DataClassification = CustomerContent;
+        }
+        field(20; "Last Name"; Text[200])
         {
             DataClassification = CustomerContent;
         }
@@ -77,7 +85,7 @@ table 50014 "Student Registration"
         {
             DataClassification = CustomerContent;
         }
-        field(19; "Last Name"; Text[200])
+        field(21; "Utme Score"; Integer)
         {
             DataClassification = CustomerContent;
         }
@@ -85,7 +93,7 @@ table 50014 "Student Registration"
 
     keys
     {
-        key(PK; "Registration No.")
+        key(PK; "Registration No.", "UTME No.")
         {
             Clustered = true;
         }
