@@ -1,15 +1,16 @@
-page 50023 "Processed BR Requests"
+
+page 50024 "Processed BR Request"
 {
-    PageType = List;
+    PageType = Card;
+    ApplicationArea = All;
+    UsageCategory = Administration;
     SourceTable = "Voucher Header";
-    CardPageId = "Processed BR Request";
-    Editable = false;
 
     layout
     {
         area(Content)
         {
-            repeater(Group)
+            group(GroupName)
             {
                 field("Document No."; Rec."Document No.")
                 {
@@ -27,6 +28,15 @@ page 50023 "Processed BR Requests"
                 {
                     ApplicationArea = All;
                 }
+                field(ProspectiveStudentID; Rec.ProspectiveStudentID)
+                {
+                    ApplicationArea = All;
+                }
+                field("Full Name"; Rec."Full Name")
+                {
+                    ApplicationArea = All;
+                    Caption = 'Prospective Student Full Name';
+                }
                 field("Credit Amount"; Rec."Credit Amount")
                 {
                     ApplicationArea = All;
@@ -35,7 +45,17 @@ page 50023 "Processed BR Requests"
                 {
                     ApplicationArea = All;
                 }
-                field(Status; Rec.Status)
+                field("Global Dimension 1 Code"; Rec."Global Dimension 1 Code")
+                {
+                    ApplicationArea = All;
+                    Caption = 'Cost Center';
+                }
+                field("Global Dimension 2 Code"; Rec."Global Dimension 2 Code")
+                {
+                    ApplicationArea = All;
+                    Caption = 'Division';
+                }
+                field(Narration; Rec.Narration)
                 {
                     ApplicationArea = All;
                 }
