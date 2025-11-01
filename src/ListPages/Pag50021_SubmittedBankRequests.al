@@ -4,6 +4,8 @@ page 50021 "Submitted Bank Requests"
     ApplicationArea = All;
     UsageCategory = Lists;
     SourceTable = "Voucher Header";
+    CardPageId = "Submitted Bank Request";
+    Editable = false;
 
     layout
     {
