@@ -34,4 +34,25 @@ codeunit 50000 "File Upload"
         end;
     end;
 
+    [EventSubscriber(ObjectType::Table, Database::"Document Attachment", OnBeforeInsertAttachment, '', false, false)]
+    procedure OnBeforeInsertAttachment()
+    var
+        VoucherHeader: Record "Voucher Header";
+        DocAttachment: Record "Document Attachment";
+    begin
+        case DocAttachment."Table ID" of
+            Database::"Voucher Header":
+                begin
+
+                    VoucherHeader.SetRange("Document No.", DocAttachment."No.");
+                    VoucherHeader.SetRange(Status, VoucherHeader.Status);
+                    IF VoucherHeader.FindSet() THEN begin
+                        Message('This is table attachment number %1', VoucherHeader."Document No.");
+                        VoucherHeader.Status := VoucherHeader.Status::Released;
+                    end;
+                    Message('Outside the code');
+                end;
+        end;
+        Message('Outside Case');
+    end;
 }

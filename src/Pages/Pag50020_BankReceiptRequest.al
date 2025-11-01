@@ -95,14 +95,26 @@ page 50020 "Bank Reciept Request"
             action(SubmitRequest)
             {
                 Caption = 'Submit Request';
+                ApplicationArea = All;
                 Image = SendConfirmation;
                 Promoted = true;
                 PromotedCategory = Process;
                 PromotedIsBig = true;
 
                 trigger OnAction()
+                var
+                    // DocAttachment: Record "Document Attachment";
+                    // VoucherHeader: Record "Voucher Header";
+
+                    mycode: Codeunit "File Upload";
                 begin
-                    Rec.Status := Rec.Status::Released;
+                    // VoucherHeader.SetRange("Document No.", DocAttachment."No.");
+                    // IF VoucherHeader.FindSet() THEN begin
+                    //     Message('This is table attachment number %1', Rec."Document No.");
+                    //     Rec.Status := Rec.Status::Released;
+                    // end;
+                    mycode.OnBeforeInsertAttachment();
+                    // Message('Outside the code');
                 end;
             }
         }

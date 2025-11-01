@@ -1,11 +1,14 @@
 table 50013 "Voucher Header"
 {
+    DataCaptionFields = "Voucher Type", "Document No.";
     DataClassification = CustomerContent;
 
     fields
     {
 
-        field(1; "Document No."; Code[20])
+        field(1;
+        "Document No.";
+        Code[20])
         {
             Caption = 'Document No.';
             DataClassification = CustomerContent;
@@ -21,7 +24,7 @@ table 50013 "Voucher Header"
             Caption = 'Status';
             DataClassification = CustomerContent;
             OptionMembers = Open,"Pending Approval",Released,Cancelled;
-            Editable = false;
+            // Editable = false;
         }
         field(4; "Posting Date"; Date)
         {
@@ -203,7 +206,7 @@ table 50013 "Voucher Header"
     }
     keys
     {
-        key(PK; "Voucher Type", "Document No.")
+        key(PK; "Document No.", "Voucher Type")
         {
             Clustered = true;
         }
