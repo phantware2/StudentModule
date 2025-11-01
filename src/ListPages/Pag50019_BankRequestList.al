@@ -1,10 +1,10 @@
-page 50019 "Bank Receipt Requests"
+page 50019 "Bank Requests"
 {
     PageType = List;
     ApplicationArea = All;
     UsageCategory = Lists;
     SourceTable = "Voucher Header";
-    CardPageId = "Bank Reciept Request";
+    CardPageId = "Bank Request";
     Editable = false;
 
     layout

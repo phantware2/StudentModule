@@ -1,4 +1,4 @@
-page 50020 "Bank Reciept Request"
+page 50020 "Bank Request"
 {
     PageType = Card;
     SourceTable = "Voucher Header";

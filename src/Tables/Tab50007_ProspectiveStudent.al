@@ -85,10 +85,11 @@ table 50007 "Prospective Student"
             DataClassification = CustomerContent;
             TableRelation = Program;
         }
-        field(14; "ApplicationStatus"; Enum "Prospect Status")
+        field(14; "ApplicationStatus"; Option)
         {
             Caption = 'Application Status';
             DataClassification = CustomerContent;
+            OptionMembers = New,Applied;
         }
         field(15; Source; Option)
         {
