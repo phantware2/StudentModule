@@ -1,4 +1,4 @@
-page 50029 "Voucher Header Workflow List"
+page 50029 "Voucher Header Workflows"
 {
     PageType = List;
     ApplicationArea = All;
