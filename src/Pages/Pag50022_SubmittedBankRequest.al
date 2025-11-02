@@ -2,6 +2,8 @@ page 50022 "Submitted Bank Request"
 {
     PageType = Card;
     SourceTable = "Voucher Header";
+    SourceTableView = where(Status = filter(Released));
+    RefreshOnActivate = true;
 
     layout
     {

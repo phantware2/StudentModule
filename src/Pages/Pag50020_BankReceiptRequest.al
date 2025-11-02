@@ -2,6 +2,8 @@ page 50020 "Bank Request"
 {
     PageType = Card;
     SourceTable = "Voucher Header";
+    SourceTableView = where(Status = filter(Open | Cancelled));
+    RefreshOnActivate = true;
 
     layout
     {
@@ -103,18 +105,18 @@ page 50020 "Bank Request"
 
                 trigger OnAction()
                 var
-                    // DocAttachment: Record "Document Attachment";
-                    // VoucherHeader: Record "Voucher Header";
-
-                    mycode: Codeunit "File Upload";
+                    DocAttachment: Record "Document Attachment";
                 begin
-                    // VoucherHeader.SetRange("Document No.", DocAttachment."No.");
-                    // IF VoucherHeader.FindSet() THEN begin
-                    //     Message('This is table attachment number %1', Rec."Document No.");
-                    //     Rec.Status := Rec.Status::Released;
-                    // end;
-                    mycode.OnBeforeInsertAttachment();
-                    // Message('Outside the code');
+                    DocAttachment.SetRange("No.", Rec."Document No.");
+                    DocAttachment.SetRange("Table ID", Database::"Voucher Header");
+                    IF DocAttachment.FindFirst() THEN begin
+                        if DocAttachment."File Name" <> '' then begin
+                            Rec.Status := Rec.Status::Released;
+                            Rec.Modify();
+                            CurrPage.Close();
+                        end;
+                    end else
+                        Message('No Attachment Found, Please attache Payment Receipt');
                 end;
             }
         }
