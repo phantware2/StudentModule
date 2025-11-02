@@ -13,9 +13,10 @@ table 50017 "Voucher Header Workflow"
         {
             DataClassification = CustomerContent;
         }
-        field(3; Status; Blob)
+        field(3; Status; Enum Status)
         {
             DataClassification = ToBeClassified;
+            Editable = false;
         }
         field(4; "No. Series"; Code[10])
         {
