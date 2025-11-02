@@ -220,11 +220,6 @@ table 50013 "Voucher Header"
     var
         myInt: Integer;
 
-    trigger OnInsert()
-    begin
-
-    end;
-
     trigger OnModify()
     begin
 
