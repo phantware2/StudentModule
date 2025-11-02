@@ -33,6 +33,11 @@ table 50016 "School Setup"
             DataClassification = CustomerContent;
             TableRelation = "No. Series";
         }
+        field(7; "Voucher Workflow Nos."; Code[20])
+        {
+            DataClassification = CustomerContent;
+            TableRelation = "No. Series";
+        }
     }
 
     keys
