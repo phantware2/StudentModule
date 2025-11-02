@@ -34,11 +34,11 @@ page 50030 "Voucher Header Workflow"
                 Image = SendApprovalRequest;
                 action(SendApprovalRequest)
                 {
-                    ApplicationArea = Basic, Suites;
+                    ApplicationArea = Basic, Suite;
                     Caption = 'Send A&pproval Request';
+                    Enabled = not OpenApprovalEntriesExist and CanRequestApprovalForFlow;
                     Image = SendApprovalRequest;
-                    Enabled = NOT OpenApprovalEntriesExist;
-                    ToolTip = 'Request Approval to change the record';
+                    ToolTip = 'Request approval to change the record.';
                     Promoted = true;
                     PromotedCategory = Process;
 
@@ -49,11 +49,11 @@ page 50030 "Voucher Header Workflow"
                 }
                 action(CancelApprovalRequest)
                 {
-                    ApplicationArea = Basic, Suites;
-                    Caption = 'Cancel A&pproval Request';
+                    ApplicationArea = Basic, Suite;
+                    Caption = 'Cancel Approval Re&quest';
+                    Enabled = CanCancelApprovalForRecord or CanCancelApprovalForFlow;
                     Image = CancelApprovalRequest;
-                    Enabled = CanCancelApprovalForRecord;
-                    ToolTip = 'Cancel the approval request';
+                    ToolTip = 'Cancel the approval request.';
                     Promoted = true;
                     PromotedCategory = Process;
 
@@ -71,45 +71,47 @@ page 50030 "Voucher Header Workflow"
                 Caption = 'Approval';
                 action(Approve)
                 {
-                    Caption = 'Approve';
                     ApplicationArea = All;
+                    Caption = 'Approve';
                     Image = Approve;
                     ToolTip = 'Approve the requested changes.';
-                    Promoted = true;
-                    PromotedCategory = New;
                     Visible = OpenApprovalEntriesExistCurrUser;
 
                     trigger OnAction()
+                    var
+                        ApprovalsMgmt: Codeunit "Approvals Mgmt.";
                     begin
-                        ApprovalsMgt.ApproveRecordApprovalRequest(Rec.RecordId)
+                        ApprovalsMgmt.ApproveRecordApprovalRequest(Rec.RecordId);
                     end;
                 }
                 action(Reject)
                 {
-                    Caption = 'Reject';
                     ApplicationArea = All;
+                    Caption = 'Reject';
                     Image = Reject;
-                    ToolTip = 'Reject the requested changes.';
-                    Promoted = true;
-                    PromotedCategory = New;
+                    ToolTip = 'Reject the approval request.';
+                    Visible = OpenApprovalEntriesExistCurrUser;
 
                     trigger OnAction()
+                    var
+                        ApprovalsMgmt: Codeunit "Approvals Mgmt.";
                     begin
-                        ApprovalsMgt.RejectRecordApprovalRequest(Rec.RecordId)
+                        ApprovalsMgmt.RejectRecordApprovalRequest(Rec.RecordId);
                     end;
                 }
                 action(Delegate)
                 {
-                    Caption = 'Delegate';
                     ApplicationArea = All;
+                    Caption = 'Delegate';
                     Image = Delegate;
-                    ToolTip = 'Delegate the requested changes.';
-                    Promoted = true;
-                    PromotedCategory = New;
+                    ToolTip = 'Delegate the approval to a substitute approver.';
+                    Visible = OpenApprovalEntriesExistCurrUser;
 
                     trigger OnAction()
+                    var
+                        ApprovalsMgmt: Codeunit "Approvals Mgmt.";
                     begin
-                        ApprovalsMgt.DelegateRecordApprovalRequest(Rec.RecordId)
+                        ApprovalsMgmt.DelegateRecordApprovalRequest(Rec.RecordId);
                     end;
                 }
                 action(Comment)
@@ -119,26 +121,12 @@ page 50030 "Voucher Header Workflow"
                     Image = ViewComments;
                     ToolTip = 'View or add comments for the record.';
                     Visible = OpenApprovalEntriesExistCurrUser;
-                    Promoted = true;
-                    PromotedCategory = New;
 
                     trigger OnAction()
+                    var
+                        ApprovalsMgmt: Codeunit "Approvals Mgmt.";
                     begin
-                        ApprovalsMgt.GetApprovalComment(Rec.);
-                    end;
-                }
-                action(Approvals)
-                {
-                    ApplicationArea = All;
-                    Caption = 'Approvals';
-                    Image = Approvals;
-                    ToolTip = 'View approval requests';
-                    Promoted = true;
-                    PromotedCategory = New;
-
-                    trigger OnAction()
-                    begin
-                        ApprovalsMgt.OpenApprovalEntriesPage(Rec.RecordId);
+                        ApprovalsMgmt.GetApprovalComment(Rec);
                     end;
                 }
             }
@@ -147,6 +135,12 @@ page 50030 "Voucher Header Workflow"
 
     var
         myInt: Integer;
+        ApprovalsMgmt: Codeunit "Approvals Mgmt.";
+        OpenApprovalEntriesExistCurrUser: Boolean;
+        OpenApprovalEntriesExist: Boolean;
+        CanCancelApprovalForRecord: Boolean;
+        CanCancelApprovalForFlow: Boolean;
+        CanRequestApprovalForFlow: Boolean;
 
     trigger OnAfterGetCurrRecord()
     begin
