@@ -1,4 +1,4 @@
-enum 50003 Status
+enum 50003 "Admission Status"
 {
     Extensible = true;
 

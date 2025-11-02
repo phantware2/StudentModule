@@ -101,7 +101,7 @@ table 50000 "Student Information"
             DataClassification = CustomerContent;
             Editable = false;
         }
-        field(17; Status; Enum Status)
+        field(17; Status; Enum "Admission Status")
         {
             Editable = false;
         }
