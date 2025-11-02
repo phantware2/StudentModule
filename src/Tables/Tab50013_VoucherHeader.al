@@ -6,9 +6,7 @@ table 50013 "Voucher Header"
     fields
     {
 
-        field(1;
-        "Document No.";
-        Code[20])
+        field(1; "Document No."; Code[20])
         {
             Caption = 'Document No.';
             DataClassification = CustomerContent;
@@ -219,6 +217,18 @@ table 50013 "Voucher Header"
 
     var
         myInt: Integer;
+
+
+    trigger OnInsert()
+    var
+        NoSeries: Codeunit "No. Series";
+        SchoolSetup: Record "School Setup";
+    begin
+        SchoolSetup.Get();
+        If "Document No." <> '' then begin
+            "Document No." := NoSeries.GetNextNo(SchoolSetup."Voucher Nos.")
+        end;
+    end;
 
     trigger OnModify()
     begin

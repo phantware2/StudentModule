@@ -228,12 +228,12 @@ table 50000 "Student Information"
     trigger OnInsert()
     var
         NoSeriesMgt: Codeunit "No. Series";
-        HumanResourcesSetup: Record "Human Resources Setup";
+        SchoolSetup: Record "School Setup";
     begin
-        HumanResourcesSetup.Get();
+        SchoolSetup.Get();
         if "Student ID" = '' then begin
             // "Student ID" := NoSeriesMgt.GetNextNo('STUDENTID');
-            "Student ID" := NoSeriesMgt.GetNextNo(HumanResourcesSetup."Student Nos.");
+            "Student ID" := NoSeriesMgt.GetNextNo(SchoolSetup."Student Nos.");
         end;
     end;
 
