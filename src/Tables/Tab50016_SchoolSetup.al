@@ -42,4 +42,10 @@ table 50016 "School Setup"
             Clustered = true;
         }
     }
+
+    procedure InsertRecord()
+    begin
+        If Not FindFirst() then
+            Insert();
+    end;
 }
