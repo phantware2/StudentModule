@@ -36,7 +36,7 @@ page 50030 "Voucher Header Workflow"
                 {
                     ApplicationArea = Basic, Suite;
                     Caption = 'Send A&pproval Request';
-                    Enabled = not OpenApprovalEntriesExist and CanRequestApprovalForFlow;
+                    Enabled = not OpenApprovalEntriesExist;
                     Image = SendApprovalRequest;
                     ToolTip = 'Request approval to change the record.';
                     Promoted = true;
@@ -44,7 +44,7 @@ page 50030 "Voucher Header Workflow"
 
                     trigger OnAction()
                     begin
-
+                        Message('Test');
                     end;
                 }
                 action(CancelApprovalRequest)

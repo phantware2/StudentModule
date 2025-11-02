@@ -4,6 +4,8 @@ page 50029 "Voucher Header Workflows"
     ApplicationArea = All;
     UsageCategory = Lists;
     SourceTable = "Voucher Header Workflow";
+    CardPageId = "Voucher Header Workflow";
+    Editable = false;
 
     layout
     {
