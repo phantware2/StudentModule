@@ -43,6 +43,8 @@ page 50030 "Voucher Header Workflow"
                     PromotedCategory = Process;
 
                     trigger OnAction()
+                    var
+                        CustomWorkflow: Codeunit "Custom Workflow Mgmt";
                     begin
                         Message('Test');
                     end;
