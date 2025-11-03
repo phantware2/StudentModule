@@ -1,4 +1,4 @@
-table 50017 "Voucher Header Workflow"
+table 50017 "Custom Workflow Header"
 {
     DataClassification = CustomerContent;
 

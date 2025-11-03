@@ -1,7 +1,7 @@
 page 50030 "Voucher Header Workflow"
 {
     PageType = Card;
-    SourceTable = "Voucher Header Workflow";
+    SourceTable = "Custom Workflow Header";
 
     layout
     {
@@ -45,8 +45,11 @@ page 50030 "Voucher Header Workflow"
                     trigger OnAction()
                     var
                         CustomWorkflow: Codeunit "Custom Workflow Mgmt";
+                        RecRef: RecordRef;
                     begin
-                        Message('Test');
+                        RecRef.GetTable(Rec);
+                        if CustomWorkflow.CheckApprovalsWorkflowEnabled(RecRef) then
+                            CustomWorkflow.OnSendWorkflowForApproval(RecRef);
                     end;
                 }
                 action(CancelApprovalRequest)
@@ -60,8 +63,12 @@ page 50030 "Voucher Header Workflow"
                     PromotedCategory = Process;
 
                     trigger OnAction()
+                    var
+                        CustomWorkflow: Codeunit "Custom Workflow Mgmt";
+                        RecRef: RecordRef;
                     begin
-
+                        RecRef.GetTable(Rec);
+                        CustomWorkflow.OnSendWorkflowForApproval(RecRef);
                     end;
                 }
             }
