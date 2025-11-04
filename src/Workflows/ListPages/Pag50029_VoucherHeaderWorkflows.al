@@ -3,7 +3,7 @@ page 50029 "Voucher Header Workflows"
     PageType = List;
     ApplicationArea = All;
     UsageCategory = Lists;
-    SourceTable = "Voucher Header Workflow";
+    SourceTable = "Custom Workflow Header";
     CardPageId = "Voucher Header Workflow";
     Editable = false;
 

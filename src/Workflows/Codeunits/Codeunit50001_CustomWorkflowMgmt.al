@@ -1,22 +1,22 @@
 codeunit 50001 "Custom Workflow Mgmt"
 {
-    // --------------------------------------------------------Second Step: Check if Worflow is enabled----------------------------------------------------
+    // --------------------------------------------------------First Step: Check if Worflow is enabled-----------------------------------------------------
     procedure CheckApprovalsWorkflowEnabled(var RecRef: RecordRef): Boolean
     begin
-        if not WorkflowMgt.CanExecuteWorkflow(RecRef, GetWorkflowCode(RunWorkflowOnSendForApprovalCode, RecRef)) then begin
-
+        if not WorkflowMgt.CanExecuteWorkflow(RecRef, GetWorkflowCode(RunWorkflowOnSendForApprovalCode, RecRef)) then
             Error(NoWorkflowEnabledErr);
-        end;
         exit(true);
     end;
-
-    // -----------------------------------------------------------First Step: Check if Worflow is enabled -------------------------------------------------
+    // --------------------------------------------------------First Step: Check if Worflow is enabled-----------------------------------------------------
+    // --------------------------------------------------------Second Step: Procedure to ge the workflow---------------------------------------------------
 
     procedure GetWorkflowCode(WorkflowCode: Code[128]; RecordRef: RecordRef): Code[128]
     begin
         exit(DelChr(StrSubstNo(WorkflowCode, RecordRef.Name), '=', ' '))
     end;
-    // -----------------------------------------------------------Third Step: Raise Event Integration -----------------------------------------------------
+
+    // --------------------------------------------------------Second Step: Procedure to ge the workflow---------------------------------------------------
+    // --------------------------------------------------------Third Step: Raise Event Integration---------------------------------------------------------
     [IntegrationEvent(false, false)]
     procedure OnSendWorkflowForApproval(var RecordRef: RecordRef)
     begin
@@ -27,7 +27,7 @@ codeunit 50001 "Custom Workflow Mgmt"
     procedure OnCancelWorkflowForApproval(var RecordRef: RecordRef)
     begin
     end;
-    // ----------------------------------------------------------------- Raise Event Integration ----------------------------------------------------------
+    // --------------------------------------------------------Third Step: Raise Event Integration---------------------------------------------------------
 
     // --------------------------------------------------------------Fourth Step: Add Event to the Library-------------------------------------------------
 
@@ -48,7 +48,7 @@ codeunit 50001 "Custom Workflow Mgmt"
     begin
         exit(StrSubstNo(WorkflowEventDesc, RecordRef.Name))
     end;
-
+    // --------------------------------------------------------------Fourth Step: Add Event to the Library-------------------------------------------------
     // --------------------------------------------------------------Fifth Step: Subscribe to Event Integration--------------------------------------------
     [EventSubscriber(ObjectType::Codeunit, Codeunit::"Custom Workflow Mgmt", OnSendWorkflowForApproval, '', false, false)]
     local procedure RunWorkflowOnSendWorkflowForApproval(var RecordRef: RecordRef)
@@ -61,12 +61,35 @@ codeunit 50001 "Custom Workflow Mgmt"
     begin
         WorkflowMgt.HandleEvent(GetWorkflowCode(RunWorkflowOnCancelForApprovalCode, RecordRef), RecordRef);
     end;
+    // --------------------------------------------------------------Fifth Step: Subscribe to Event Integration--------------------------------------------
+    // --------------------------------------------------Sixth Step: Handle the document status(OnOpenDocument)--------------------------------------------
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Workflow Response Handling", OnOpenDocument, '', false, false)]
+    local procedure OnOpenDocument(RecRef: RecordRef; var Handled: Boolean)
+    var
+        CustomWorkflowHeader: Record "Custom Workflow Header";
+    begin
+        case RecRef.Number of
+            Database::"Custom Workflow Header":
+                begin
+                    RecRef.SetTable(CustomWorkflowHeader);
+                    CustomWorkflowHeader.Validate(Status, CustomWorkflowHeader.Status::Open);
+                    CustomWorkflowHeader.Modify();
+                    Handled := true;
+                end;
+        end;
+    end;
+    // --------------------------------------------------Sixth Step: Handle the document status(OnOpenDocument)--------------------------------------------
 
     var
         WorkflowMgt: Codeunit "Workflow Management";
-        RunWorkflowOnSendForApprovalCode: Label 'RunWorkflowOnSend%1ForApprovalCode';
-        RunWorkflowOnCancelForApprovalCode: Label 'RunWorkflowOnCancel%1ForApprovalCode';
-        NoWorkflowEnabledErr: Label 'No approval workflow for this record type is enabled.';
-        WorfkflowSendForApprovalEventDescTxt: Label 'Approval of a %1 is requested.';
-        WorfkflowCancelForApprovalEventDescTxt: Label 'Approval of a %1 is canceled.';
+        RunWorkflowOnSendForApprovalCode:
+                Label 'RunWorkflowOnSend%1ForApprovalCode';
+        RunWorkflowOnCancelForApprovalCode:
+                Label 'RunWorkflowOnCancel%1ForApprovalCode';
+        NoWorkflowEnabledErr:
+                Label 'No approval workflow for this record type is enabled.';
+        WorfkflowSendForApprovalEventDescTxt:
+                Label 'Approval of a %1 is requested.';
+        WorfkflowCancelForApprovalEventDescTxt:
+                Label 'Approval of a %1 is canceled.';
 }
