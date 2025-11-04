@@ -73,13 +73,29 @@ codeunit 50001 "Custom Workflow Mgmt"
                 begin
                     RecRef.SetTable(CustomWorkflowHeader);
                     CustomWorkflowHeader.Validate(Status, CustomWorkflowHeader.Status::Open);
-                    CustomWorkflowHeader.Modify();
+                    CustomWorkflowHeader.Modify(true);
                     Handled := true;
                 end;
         end;
     end;
     // --------------------------------------------------Sixth Step: Handle the document status(OnOpenDocument)--------------------------------------------
-
+    // ------------------------------------------------Seventh Step: Handle the document status(OnOpenDocument)--------------------------------------------
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Approvals Mgmt.", OnSetStatusToPendingApproval, '', false, false)]
+    local procedure OnSetStatusToPendingApproval(RecRef: RecordRef; var Variant: Variant; var IsHandled: Boolean)
+    var
+        CustomWorkflowHeader: Record "Custom Workflow Header";
+    begin
+        case RecRef.Number of
+            Database::"Custom Workflow Header":
+                begin
+                    RecRef.SetTable(CustomWorkflowHeader);
+                    CustomWorkflowHeader.Validate(Status, CustomWorkflowHeader.Status::"Pending Approval");
+                    CustomWorkflowHeader.Modify(true);
+                    Variant := CustomWorkflowHeader;
+                end;
+        end;
+    end;
+    // ------------------------------------------------Seventh Step: Handle the document status(OnOpenDocument)--------------------------------------------
     var
         WorkflowMgt: Codeunit "Workflow Management";
         RunWorkflowOnSendForApprovalCode:
