@@ -24,7 +24,7 @@ codeunit 50001 "Custom Workflow Mgmt"
     end;
 
     [IntegrationEvent(false, false)]
-    local procedure OnCancelWorkflowForApproval(var RecordRef: RecordRef)
+    procedure OnCancelWorkflowForApproval(var RecordRef: RecordRef)
     begin
     end;
     // ----------------------------------------------------------------- Raise Event Integration ----------------------------------------------------------
@@ -49,7 +49,18 @@ codeunit 50001 "Custom Workflow Mgmt"
         exit(StrSubstNo(WorkflowEventDesc, RecordRef.Name))
     end;
 
-    // --------------------------------------------------------------Fifth Step: Add Event to the Library-------------------------------------------------
+    // --------------------------------------------------------------Fifth Step: Subscribe to Event Integration--------------------------------------------
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Custom Workflow Mgmt", OnSendWorkflowForApproval, '', false, false)]
+    local procedure RunWorkflowOnSendWorkflowForApproval(var RecordRef: RecordRef)
+    begin
+        WorkflowMgt.HandleEvent(GetWorkflowCode(RunWorkflowOnSendForApprovalCode, RecordRef), RecordRef);
+    end;
+
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Custom Workflow Mgmt", OnCancelWorkflowForApproval, '', false, false)]
+    local procedure RunWorkflowCanceldWorkflowForApproval(var RecordRef: RecordRef)
+    begin
+        WorkflowMgt.HandleEvent(GetWorkflowCode(RunWorkflowOnCancelForApprovalCode, RecordRef), RecordRef);
+    end;
 
     var
         WorkflowMgt: Codeunit "Workflow Management";
