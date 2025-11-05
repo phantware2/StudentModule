@@ -106,7 +106,7 @@ codeunit 50001 "Custom Workflow Mgmt"
         ApprovalEntryArgument."Document No." := CustomWorkflowHeader."No.";
     end;
     // ------------------------------------------------Eightth Step: Subscribe to Event Argument(OnOpenDocument)-------------------------------------------
-    // ------------------------------------------------Ninth Step: Handle the document status(OnOpenDocument)--------------------------------------------
+    // ------------------------------------------------Ninth Step: Handle the document status(OnReleaseDocument)-------------------------------------------
     [EventSubscriber(ObjectType::Codeunit, Codeunit::"Workflow Response Handling", OnReleaseDocument, '', false, false)]
     local procedure OnReleaseDocument(RecRef: RecordRef; var Handled: Boolean)
     var
@@ -122,7 +122,25 @@ codeunit 50001 "Custom Workflow Mgmt"
                 end;
         end;
     end;
-    // ------------------------------------------------Ninth Step: Handle the document status(OnOpenDocument)--------------------------------------------
+    // ------------------------------------------------Ninth Step: Handle the document status(OnReleaseDocument)-------------------------------------------
+    // ------------------------------------------------Tenth Step: Handle the document status(OnOpenDocument)--------------------------------------------
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Approvals Mgmt.", OnRejectApprovalRequest, '', false, false)]
+    local procedure OnRejectApprovalRequest(var ApprovalEntry: Record "Approval Entry")
+    var
+        RecRef: RecordRef;
+        CustomWorkflowHeader: Record "Custom Workflow Header";
+    begin
+        case ApprovalEntry."Table ID" of
+            Database::"Custom Workflow Header":
+                begin
+                    If CustomWorkflowHeader.Get(ApprovalEntry."Document No.") then begin
+                        CustomWorkflowHeader.Validate(Status, CustomWorkflowHeader.Status::Rejected);
+                        CustomWorkflowHeader.Modify(true);
+                    end;
+                end;
+        end;
+    end;
+    // ------------------------------------------------Seventh Step: Handle the document status(OnOpenDocument)--------------------------------------------
     var
         WorkflowMgt: Codeunit "Workflow Management";
         RunWorkflowOnSendForApprovalCode:
