@@ -111,7 +111,7 @@ page 50020 "Bank Request"
                     DocAttachment.SetRange("Table ID", Database::"Voucher Header");
                     IF DocAttachment.FindFirst() THEN begin
                         if DocAttachment."File Name" <> '' then begin
-                            Rec.Status := Rec.Status::Released;
+                            Rec.Status := Rec.Status::Submitted;
                             Rec.Modify();
                             CurrPage.Close();
                         end;
