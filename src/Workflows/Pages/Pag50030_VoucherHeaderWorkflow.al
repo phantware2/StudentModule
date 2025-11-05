@@ -143,7 +143,6 @@ page 50030 "Voucher Header Workflow"
     }
 
     var
-        myInt: Integer;
         ApprovalsMgmt: Codeunit "Approvals Mgmt.";
         OpenApprovalEntriesExistCurrUser: Boolean;
         OpenApprovalEntriesExist: Boolean;
