@@ -106,6 +106,23 @@ codeunit 50001 "Custom Workflow Mgmt"
         ApprovalEntryArgument."Document No." := CustomWorkflowHeader."No.";
     end;
     // ------------------------------------------------Eightth Step: Subscribe to Event Argument(OnOpenDocument)-------------------------------------------
+    // ------------------------------------------------Ninth Step: Handle the document status(OnOpenDocument)--------------------------------------------
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Workflow Response Handling", OnReleaseDocument, '', false, false)]
+    local procedure OnReleaseDocument(RecRef: RecordRef; var Handled: Boolean)
+    var
+        CustomWorkflowHeader: Record "Custom Workflow Header";
+    begin
+        case RecRef.Number of
+            Database::"Custom Workflow Header":
+                begin
+                    RecRef.SetTable(CustomWorkflowHeader);
+                    CustomWorkflowHeader.Validate(Status, CustomWorkflowHeader.Status::Approved);
+                    CustomWorkflowHeader.Modify(true);
+                    Handled := true;
+                end;
+        end;
+    end;
+    // ------------------------------------------------Ninth Step: Handle the document status(OnOpenDocument)--------------------------------------------
     var
         WorkflowMgt: Codeunit "Workflow Management";
         RunWorkflowOnSendForApprovalCode:
