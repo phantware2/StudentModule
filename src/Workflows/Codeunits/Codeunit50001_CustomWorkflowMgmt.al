@@ -37,10 +37,10 @@ codeunit 50001 "Custom Workflow Mgmt"
         RecordRef: RecordRef;
         WorkflowEventHandling: Codeunit "Workflow Event Handling";
     begin
-        RecordRef.Open(Database::"Custom Workflow Header");
-        WorkflowEventHandling.AddEventToLibrary(GetWorkflowCode(RunWorkflowOnSendForApprovalCode, RecordRef), DATABASE::"Custom Workflow Header",
+        RecordRef.Open(Database::"Voucher Header");
+        WorkflowEventHandling.AddEventToLibrary(GetWorkflowCode(RunWorkflowOnSendForApprovalCode, RecordRef), DATABASE::"Voucher Header",
           GetWorkflowEventDesc(WorfkflowSendForApprovalEventDescTxt, RecordRef), 0, false);
-        WorkflowEventHandling.AddEventToLibrary(GetWorkflowCode(RunWorkflowOnCancelForApprovalCode, RecordRef), DATABASE::"Custom Workflow Header",
+        WorkflowEventHandling.AddEventToLibrary(GetWorkflowCode(RunWorkflowOnCancelForApprovalCode, RecordRef), DATABASE::"Voucher Header",
           GetWorkflowEventDesc(WorfkflowCancelForApprovalEventDescTxt, RecordRef), 0, false);
     end;
 
@@ -66,14 +66,14 @@ codeunit 50001 "Custom Workflow Mgmt"
     [EventSubscriber(ObjectType::Codeunit, Codeunit::"Workflow Response Handling", OnOpenDocument, '', false, false)]
     local procedure OnOpenDocument(RecRef: RecordRef; var Handled: Boolean)
     var
-        CustomWorkflowHeader: Record "Custom Workflow Header";
+        VoucherHeader: Record "Voucher Header";
     begin
         case RecRef.Number of
-            Database::"Custom Workflow Header":
+            Database::"Voucher Header":
                 begin
-                    RecRef.SetTable(CustomWorkflowHeader);
-                    CustomWorkflowHeader.Validate(Status, CustomWorkflowHeader.Status::Open);
-                    CustomWorkflowHeader.Modify(true);
+                    RecRef.SetTable(VoucherHeader);
+                    VoucherHeader.Validate(Status, VoucherHeader.Status::Open);
+                    VoucherHeader.Modify(true);
                     Handled := true;
                 end;
         end;
@@ -83,15 +83,16 @@ codeunit 50001 "Custom Workflow Mgmt"
     [EventSubscriber(ObjectType::Codeunit, Codeunit::"Approvals Mgmt.", OnSetStatusToPendingApproval, '', false, false)]
     local procedure OnSetStatusToPendingApproval(RecRef: RecordRef; var Variant: Variant; var IsHandled: Boolean)
     var
-        CustomWorkflowHeader: Record "Custom Workflow Header";
+        VoucherHeader: Record "Voucher Header";
     begin
         case RecRef.Number of
-            Database::"Custom Workflow Header":
+            Database::"Voucher Header":
                 begin
-                    RecRef.SetTable(CustomWorkflowHeader);
-                    CustomWorkflowHeader.Validate(Status, CustomWorkflowHeader.Status::"Pending Approval");
-                    CustomWorkflowHeader.Modify(true);
-                    Variant := CustomWorkflowHeader;
+                    RecRef.SetTable(VoucherHeader);
+                    VoucherHeader.Validate(Status, VoucherHeader.Status::"Pending Approval");
+                    VoucherHeader.Modify(true);
+                    Variant := VoucherHeader;
+                    IsHandled := true;
                 end;
         end;
     end;
@@ -100,24 +101,24 @@ codeunit 50001 "Custom Workflow Mgmt"
     [EventSubscriber(ObjectType::Codeunit, Codeunit::"Approvals Mgmt.", OnPopulateApprovalEntryArgument, '', false, false)]
     local procedure OnPopulateApprovalEntryArgument(var RecRef: RecordRef; var ApprovalEntryArgument: Record "Approval Entry"; WorkflowStepInstance: Record "Workflow Step Instance")
     var
-        CustomWorkflowHeader: Record "Custom Workflow Header";
+        VoucherHeader: Record "Voucher Header";
     begin
-        RecRef.SetTable(CustomWorkflowHeader);
-        ApprovalEntryArgument."Document No." := CustomWorkflowHeader."No.";
+        RecRef.SetTable(VoucherHeader);
+        ApprovalEntryArgument."Document No." := VoucherHeader."Document No.";
     end;
     // ------------------------------------------------Eightth Step: Subscribe to Event Argument(OnOpenDocument)-------------------------------------------
     // ------------------------------------------------Ninth Step: Handle the document status(OnReleaseDocument)-------------------------------------------
     [EventSubscriber(ObjectType::Codeunit, Codeunit::"Workflow Response Handling", OnReleaseDocument, '', false, false)]
     local procedure OnReleaseDocument(RecRef: RecordRef; var Handled: Boolean)
     var
-        CustomWorkflowHeader: Record "Custom Workflow Header";
+        VoucherHeader: Record "Voucher Header";
     begin
         case RecRef.Number of
-            Database::"Custom Workflow Header":
+            Database::"Voucher Header":
                 begin
-                    RecRef.SetTable(CustomWorkflowHeader);
-                    CustomWorkflowHeader.Validate(Status, CustomWorkflowHeader.Status::Approved);
-                    CustomWorkflowHeader.Modify(true);
+                    RecRef.SetTable(VoucherHeader);
+                    VoucherHeader.Validate(Status, VoucherHeader.Status::Released);
+                    VoucherHeader.Modify(true);
                     Handled := true;
                 end;
         end;
@@ -128,14 +129,14 @@ codeunit 50001 "Custom Workflow Mgmt"
     local procedure OnRejectApprovalRequest(var ApprovalEntry: Record "Approval Entry")
     var
         RecRef: RecordRef;
-        CustomWorkflowHeader: Record "Custom Workflow Header";
+        VoucherHeader: Record "Voucher Header";
     begin
         case ApprovalEntry."Table ID" of
-            Database::"Custom Workflow Header":
+            Database::"Voucher Header":
                 begin
-                    If CustomWorkflowHeader.Get(ApprovalEntry."Document No.") then begin
-                        CustomWorkflowHeader.Validate(Status, CustomWorkflowHeader.Status::Rejected);
-                        CustomWorkflowHeader.Modify(true);
+                    If VoucherHeader.Get(ApprovalEntry."Document No.") then begin
+                        VoucherHeader.Validate(Status, VoucherHeader.Status::Cancelled);
+                        VoucherHeader.Modify(true);
                     end;
                 end;
         end;
