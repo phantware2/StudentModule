@@ -1,8 +1,10 @@
-page 50023 "Processed BR Requests"
+page 50023 "Processed Bank Requests"
 {
     PageType = List;
+    ApplicationArea = All;
+    UsageCategory = Lists;
     SourceTable = "Voucher Header";
-    CardPageId = "Processed BR Request";
+    CardPageId = "Processed Bank Request";
     Editable = false;
 
     layout

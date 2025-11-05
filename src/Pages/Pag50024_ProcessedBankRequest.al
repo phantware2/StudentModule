@@ -1,9 +1,7 @@
 
-page 50024 "Processed BR Request"
+page 50024 "Processed Bank Request"
 {
     PageType = Card;
-    ApplicationArea = All;
-    UsageCategory = Administration;
     SourceTable = "Voucher Header";
 
     layout
