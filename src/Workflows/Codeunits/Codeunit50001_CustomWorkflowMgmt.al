@@ -142,16 +142,23 @@ codeunit 50001 "Custom Workflow Mgmt"
         end;
     end;
     // ------------------------------------------------Seventh Step: Handle the document status(OnOpenDocument)--------------------------------------------
+    // ------------------------------------------------Eightth Step: Subscrit to Approval Table Relation---------------------------------------------------
+    [EventSubscriber(ObjectType::Codeunit, CodeUnit::"Workflow Setup", 'OnAfterInsertApprovalsTableRelations', '', true, true)]
+    local procedure OnAfterInsertApprovalsTableRelations()
+    var
+        ApprovalEntry: Record "Approval Entry";
+        Workflowsetup: Codeunit "Workflow Setup";
+    begin
+        Workflowsetup.InsertTableRelation(Database::"Voucher Header", 0, DATABASE::"Approval Entry", ApprovalEntry.FieldNo("Record ID to Approve"));
+
+    end;
+    // ------------------------------------------------Eightth Step: Subscrit to Approval Table Relation---------------------------------------------------
+
     var
         WorkflowMgt: Codeunit "Workflow Management";
-        RunWorkflowOnSendForApprovalCode:
-                Label 'RunWorkflowOnSend%1ForApprovalCode';
-        RunWorkflowOnCancelForApprovalCode:
-                Label 'RunWorkflowOnCancel%1ForApprovalCode';
-        NoWorkflowEnabledErr:
-                Label 'No approval workflow for this record type is enabled.';
-        WorfkflowSendForApprovalEventDescTxt:
-                Label 'Approval of a %1 is requested.';
-        WorfkflowCancelForApprovalEventDescTxt:
-                Label 'Approval of a %1 is canceled.';
+        RunWorkflowOnSendForApprovalCode: Label 'RunWorkflowOnSend%1ForApprovalCode';
+        RunWorkflowOnCancelForApprovalCode: Label 'RunWorkflowOnCancel%1ForApprovalCode';
+        NoWorkflowEnabledErr: Label 'No approval workflow for this record type is enabled.';
+        WorfkflowSendForApprovalEventDescTxt: Label 'Approval of a %1 is requested.';
+        WorfkflowCancelForApprovalEventDescTxt: Label 'Approval of a %1 is canceled.';
 }
