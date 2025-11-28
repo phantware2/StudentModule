@@ -24,4 +24,18 @@ page 50003 Departments
             }
         }
     }
+    actions
+    {
+        area(Processing)
+        {
+            action("Departments Requirements")
+            {
+                ApplicationArea = Basic, Suite;
+                Image = Navigate;
+                RunObject = page "SSCE Subject Requirements";
+                RunPageLink = "Department Code" = FIELD(Code);
+                RunPageMode = Edit;
+            }
+        }
+    }
 }

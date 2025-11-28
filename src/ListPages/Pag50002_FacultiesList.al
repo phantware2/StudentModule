@@ -33,14 +33,13 @@ page 50002 Faculties
     {
         area(Processing)
         {
-            action(ActionName)
+            action("Departments")
             {
-                ApplicationArea = All;
-
-                trigger OnAction();
-                begin
-
-                end;
+                ApplicationArea = Basic, Suite;
+                Image = Navigate;
+                RunObject = page "Departments";
+                RunPageLink = "Faculty Code" = FIELD(Code);
+                RunPageMode = Edit;
             }
         }
     }
