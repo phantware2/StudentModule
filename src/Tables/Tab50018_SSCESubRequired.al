@@ -11,18 +11,36 @@ table 50018 "SSCE Subject Required"
         field(2; "Subject No."; Code[20])
         {
             DataClassification = CustomerContent;
+
+            TableRelation = "SSCE Subjects"."Subject No.";
+
+            trigger OnValidate()
+            var
+                subjectRec: Record "SSCE Subjects";
+            begin
+                if subjectRec.Get("Subject No.") then begin
+                    "Subject Name" := subjectRec."Subject Name";
+                end else begin
+                    Error('Subject No. %1 does not exist in SSCE Subjects table.', "Subject No.");
+                end;
+            end;
         }
         field(3; "Subject Name"; Text[100])
         {
             DataClassification = CustomerContent;
+            Editable = false;
         }
         field(4; "UTME Score"; Integer)
         {
             DataClassification = CustomerContent;
+            MinValue = 0;
+            MaxValue = 100;
         }
         field(5; "Jamb Score"; Integer)
         {
             DataClassification = CustomerContent;
+            MinValue = 0;
+            MaxValue = 100;
         }
         field(6; "Jamb Required"; Boolean)
         {
@@ -31,6 +49,8 @@ table 50018 "SSCE Subject Required"
         field(7; "CA Score"; Integer)
         {
             DataClassification = CustomerContent;
+            MinValue = 0;
+            MaxValue = 50;
         }
     }
 
