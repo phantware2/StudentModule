@@ -25,6 +25,12 @@ table 50017 "SSCE Subjects"
     fieldgroups
     {
         // Add changes to field groups here
+        fieldgroup(DropDown; "Subject No.", "Subject Name")
+        {
+        }
+        fieldgroup(Brick; "Subject No.", "Subject Name")
+        {
+        }
     }
 
     var
