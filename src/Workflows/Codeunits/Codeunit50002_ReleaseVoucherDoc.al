@@ -30,6 +30,27 @@ codeunit 50002 ReleaseVoucherDocument
             Error(Text003);
     end;
 
+
+    procedure CreateBRVFromBankRequest(var BankRequest: Record "Voucher Header")
+    var
+        GLSetup: Record "General Ledger Setup";
+        VoucherHeader: Record "Voucher Header";
+        GenJnlLine: Record "Gen. Journal Line";
+        GenJnlLine2: Record "Gen. Journal Line";
+        PostedVoucherHeader: Record "Posted Voucher Header";
+        Customer: Record Customer;
+        RecordLinks: Record "Record Link";
+        UserSetup: Record "User Setup";
+        LineNo: Integer;
+        BRVNumberLbl: Label 'Bank Receipt Voucher %1 created', Comment = '%1-Bank receipt number';
+    begin
+        // Implementation for creating BRV from released voucher document
+        UserSetup.Get(UserId);
+        UserSetup.TestField();
+    end;
+
+
+
     var
         Text003: Label 'The approval process must be cancelled or completed to reopen this document.';
 }
