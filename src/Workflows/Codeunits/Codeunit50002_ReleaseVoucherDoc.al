@@ -50,7 +50,36 @@ codeunit 50002 ReleaseVoucherDocument
         BankRequest.TestField("Customer No.");
         BankRequest.TestField(Status, BankRequest.Status::Released);
         Customer.Get(BankRequest."Customer No.");
-        if Customer
+        if Customer."SG_ Retail Customer" then
+            BankRequest.TestField("ProspectiveStudentID");
+        BankRequest.TestField("Receipt Amount");
+        VoucherHeader.Init();
+        VoucherHeader."Voucher Type" := VoucherHeader."Voucher Type"::BRV;
+        VoucherHeader."Posting Date" := BankRequest."Posting Date";
+        VoucherHeader.Validate(Nature, BankRequest.Nature);
+        VoucherHeader."Responsibility Center" := BankRequest."Responsibility Center";
+        VoucherHeader."Document No." := BankRequest."Document No.";
+        VoucherHeader."Depositor Name" := BankRequest."Depositor Name";
+        VoucherHeader."Paid Date" := BankRequest."Paid Date";
+        VoucherHeader.Insert();
+        RecordLinks.Reset();
+        RecordLinks.SetFilter("Record ID", Format(BankRequest.RecordId));
+        RecordLinks.FindSet();
+        RecordLinks.ModifyAll("Record ID", VoucherHeader.RecordId);
+
+        GenJnlLine2.SetRange("Journal Template Name", 'BRV');
+        GenJnlLine2.SetRange("Journal Batch Name", 'BRV');
+        IF GenJnlLine2.FindFirst() then;
+        LineNo := GenJnlLine2."Line No." + 10000;
+        GenJnlLine.Init();
+        GenJnlLine."Document No." := VoucherHeader."Document No.";
+        GenJnlLine."Posting Date" := VoucherHeader."Posting Date";
+        GenJnlLine."Document Type" := GenJnlLine."Document Type"::Payment;
+        IF VoucherHeader.Nature = 2 then
+            GenJnlLine."Document Type" := GenJnlLine."Document Type"::Refund;
+        GenJnlLine."Journal Template Name" := 'BRV';
+        GenJnlLine."Journal Batch Name" := 'BRV';
+        GenJnlLine.
     end;
 
 

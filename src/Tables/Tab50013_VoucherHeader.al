@@ -118,7 +118,7 @@ table 50013 "Voucher Header"
         {
             Caption = 'Nature';
             DataClassification = CustomerContent;
-            OptionMembers = "Direct Payment","Indirect Payment";
+            OptionMembers = "Direct Payment","Indirect Payment",Refund;
         }
         field(18; "Account Type"; Option)
         {
