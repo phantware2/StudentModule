@@ -133,6 +133,21 @@ page 50022 "Submitted Bank Request"
                         CustomWorkflow.OnSendWorkflowForApproval(RecRef);
                     end;
                 }
+                action(Reopen)
+                {
+                    ApplicationArea = All;
+                    Caption = 'Reopen';
+                    Image = ReOpen;
+                    ToolTip = 'Reopen the document after approval is completed.';
+                    Enabled = Rec.Status <> Rec.Status::Open;
+
+                    trigger OnAction()
+                    var
+                        ReleaseVoucherDocument: Codeunit "ReleaseVoucherDocument";
+                    begin
+                        ReleaseVoucherDocument.PerformManualReopen(Rec);
+                    end;
+                }
             }
         }
         area(Creation)

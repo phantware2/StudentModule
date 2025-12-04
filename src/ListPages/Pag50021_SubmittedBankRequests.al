@@ -6,7 +6,7 @@ page 50021 "Submitted Bank Requests"
     SourceTable = "Voucher Header";
     CardPageId = "Submitted Bank Request";
     Editable = false;
-    SourceTableView = where(Status = filter(Submitted));
+    SourceTableView = where(Status = filter(Submitted | "Pending Approval"));
 
     layout
     {
