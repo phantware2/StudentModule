@@ -46,7 +46,11 @@ codeunit 50002 ReleaseVoucherDocument
     begin
         // Implementation for creating BRV from released voucher document
         UserSetup.Get(UserId);
-        UserSetup.TestField();
+        UserSetup.TestField(UserSetup."Allow to Create BRV");
+        BankRequest.TestField("Customer No.");
+        BankRequest.TestField(Status, BankRequest.Status::Released);
+        Customer.Get(BankRequest."Customer No.");
+        if Customer
     end;
 
 
