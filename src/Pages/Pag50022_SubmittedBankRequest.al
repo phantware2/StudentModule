@@ -2,7 +2,7 @@ page 50022 "Submitted Bank Request"
 {
     PageType = Card;
     SourceTable = "Voucher Header";
-    SourceTableView = where(Status = filter(Submitted));
+    SourceTableView = where(Status = filter(Submitted | "Pending Approval"));
     RefreshOnActivate = true;
 
     layout
@@ -140,6 +140,8 @@ page 50022 "Submitted Bank Request"
                     Image = ReOpen;
                     ToolTip = 'Reopen the document after approval is completed.';
                     Enabled = Rec.Status <> Rec.Status::Open;
+                    Promoted = true;
+                    PromotedCategory = Process;
 
                     trigger OnAction()
                     var
@@ -226,4 +228,14 @@ page 50022 "Submitted Bank Request"
         CanCancelApprovalForRecord: Boolean;
         CanCancelApprovalForFlow: Boolean;
         CanRequestApprovalForFlow: Boolean;
+        WorkflowWebhookMgt: Codeunit "Workflow Webhook Management";
+
+
+    trigger OnAfterGetRecord()
+    begin
+        OpenApprovalEntriesExistCurrUser := ApprovalsMgmt.HasOpenApprovalEntriesForCurrentUser(Rec.RECORDID);
+        OpenApprovalEntriesExist := ApprovalsMgmt.HasOpenApprovalEntries(Rec.RECORDID);
+        CanCancelApprovalForRecord := ApprovalsMgmt.CanCancelApprovalForRecord(Rec.RECORDID);
+        WorkflowWebhookMgt.GetCanRequestAndCanCancel(Rec.RecordId, CanRequestApprovalForFlow, CanCancelApprovalForFlow);
+    end;
 }
