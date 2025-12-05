@@ -24,6 +24,13 @@ table 50013 "Voucher Header"
             OptionMembers = Open,"Pending Approval",Submitted,Released,Cancelled;
             // Editable = false;
         }
+
+        field(33; "Request Status"; Option)
+        {
+            OptionMembers = Open,"Pending Processing",Processed;
+            DataClassification = CustomerContent;
+            Editable = false;
+        }
         field(4; "Posting Date"; Date)
         {
             Caption = 'Posting Date';

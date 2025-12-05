@@ -14,10 +14,16 @@ page 50022 "Submitted Bank Request"
                 field("Document No."; Rec."Document No.")
                 {
                     ApplicationArea = All;
+                    Editable = false;
                 }
                 field("Responsibility Center"; Rec."Responsibility Center")
                 {
                     ApplicationArea = All;
+
+                    trigger OnValidate()
+                    begin
+                        Rec.TestField(Rec.Status);
+                    end;
                 }
                 field("Customer No."; Rec."Customer No.")
                 {
