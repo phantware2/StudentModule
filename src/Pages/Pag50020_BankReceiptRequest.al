@@ -14,6 +14,7 @@ page 50020 "Bank Request"
                 field("Document No."; Rec."Document No.")
                 {
                     ApplicationArea = All;
+                    Editable = false;
                 }
                 field("Responsibility Center"; Rec."Responsibility Center")
                 {

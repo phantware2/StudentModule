@@ -225,28 +225,12 @@ table 50013 "Voucher Header"
 
     trigger OnInsert()
     var
-        NoSeries: Codeunit "No. Series";
+        NoSeriesMgt: Codeunit "No. Series";
         SchoolSetup: Record "School Setup";
     begin
         SchoolSetup.Get();
-        If "Document No." <> '' then begin
-            "Document No." := NoSeries.GetNextNo(SchoolSetup."Voucher Nos.")
+        if "Document No." = '' then begin
+            "Document No." := NoSeriesMgt.GetNextNo(SchoolSetup."Voucher Nos.");
         end;
     end;
-
-    trigger OnModify()
-    begin
-
-    end;
-
-    trigger OnDelete()
-    begin
-
-    end;
-
-    trigger OnRename()
-    begin
-
-    end;
-
 }

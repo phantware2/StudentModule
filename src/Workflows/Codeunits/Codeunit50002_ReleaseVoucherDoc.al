@@ -124,11 +124,11 @@ codeunit 50002 ReleaseVoucherDocument
         GenJnlLine.Validate(Nature, VoucherHeader.Nature);
         GenJnlLine.Insert(true);
 
-        PostedVoucherHeader.Init();
-        PostedVoucherHeader.TransferFields(BankRequest);
-        PostedVoucherHeader.Insert();
-        BankRequest.Delete();
-        GLSetup.Get()
+        // PostedVoucherHeader.Init();
+        // PostedVoucherHeader.TransferFields(BankRequest);
+        // PostedVoucherHeader.Insert();
+        // BankRequest.Delete();
+        // GLSetup.Get()
 
     end;
 
