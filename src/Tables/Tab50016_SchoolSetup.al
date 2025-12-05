@@ -38,6 +38,11 @@ table 50016 "School Setup"
             DataClassification = CustomerContent;
             TableRelation = "No. Series";
         }
+        field(8; "Application Nos."; Code[20])
+        {
+            DataClassification = CustomerContent;
+            TableRelation = "No. Series";
+        }
     }
 
     keys

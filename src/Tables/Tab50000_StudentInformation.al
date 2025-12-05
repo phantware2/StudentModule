@@ -211,6 +211,15 @@ table 50000 "Student Information"
             DataClassification = CustomerContent;
             OptionMembers = Undergraduate,Postgraduate,PartTime;
         }
+        field(31; "Application Fee Paid"; Boolean)
+        {
+            DataClassification = CustomerContent;
+        }
+        field(32; "Application ID"; Code[20])
+        {
+            Caption = 'Application ID';
+            DataClassification = CustomerContent;
+        }
     }
 
     keys

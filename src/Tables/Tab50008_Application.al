@@ -118,27 +118,14 @@ table 50008 Application
         // Add changes to field groups here
     }
 
-    var
-        myInt: Integer;
-
     trigger OnInsert()
+    var
+        NoSeriesMgt: Codeunit "No. Series";
+        SchoolSetup: Record "School Setup";
     begin
-
+        SchoolSetup.Get();
+        if "Application ID" = '' then begin
+            "Application ID" := NoSeriesMgt.GetNextNo(SchoolSetup."Application Nos.");
+        end;
     end;
-
-    trigger OnModify()
-    begin
-
-    end;
-
-    trigger OnDelete()
-    begin
-
-    end;
-
-    trigger OnRename()
-    begin
-
-    end;
-
 }

@@ -33,6 +33,10 @@ page 50028 "School Setup"
                 {
                     ApplicationArea = All;
                 }
+                field("Application Nos."; Rec."Application Nos.")
+                {
+                    ApplicationArea = All;
+                }
             }
         }
     }
