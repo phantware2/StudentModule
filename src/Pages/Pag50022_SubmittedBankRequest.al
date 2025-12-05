@@ -233,7 +233,7 @@ page 50022 "Submitted Bank Request"
                     begin
                         //Rec.TestField("Bank No.");
                         UserSetup.Get(UserId);
-                        // UserSetup.TestField("Bank Selector");
+                        UserSetup.TestField("Bank Selector");
                         Rec.Status := Rec.Status::Released;
                         ReleaseVoucher.CreateBRVFromBankRequest(Rec);
                     end;

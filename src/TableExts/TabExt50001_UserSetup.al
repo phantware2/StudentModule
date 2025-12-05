@@ -6,7 +6,11 @@ tableextension 50001 UserSetupExt extends "User Setup"
         field(50000; "Allow to Create BRV"; Boolean)
         {
             Caption = 'Allow to Create BRV';
-            DataClassification = ToBeClassified;
+            DataClassification = CustomerContent;
+        }
+        field(50001; "Bank Selector"; Boolean)
+        {
+            DataClassification = CustomerContent;
         }
     }
 }
