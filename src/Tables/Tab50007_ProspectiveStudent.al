@@ -123,6 +123,20 @@ table 50007 "Prospective Student"
             DataClassification = CustomerContent;
             Editable = false;
         }
+        field(21; "Application Fee Paid"; Boolean)
+        {
+            DataClassification = CustomerContent;
+        }
+        field(22; "Application ID"; Code[20])
+        {
+            Caption = 'Application ID';
+            DataClassification = CustomerContent;
+        }
+        field(23; "Source Document No."; Code[20])
+        {
+            Caption = 'Source Doc. no.';
+            DataClassification = CustomerContent;
+        }
     }
     keys
     {

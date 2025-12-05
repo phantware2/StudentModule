@@ -218,6 +218,27 @@ page 50022 "Submitted Bank Request"
                     end;
                 }
             }
+            group(Vouchers)
+            {
+                action(CreateBRV)
+                {
+                    Caption = 'Create Voucher';
+                    ApplicationArea = All;
+                    Image = Create;
+                    ToolTip = 'Create Bank Receipt Voucher from released Bank Request.';
+                    trigger OnAction()
+                    var
+                        UserSetup: Record "User Setup";
+                        ReleaseVoucher: Codeunit "ReleaseVoucherDocument";
+                    begin
+                        //Rec.TestField("Bank No.");
+                        UserSetup.Get(UserId);
+                        // UserSetup.TestField("Bank Selector");
+                        Rec.Status := Rec.Status::Released;
+                        ReleaseVoucher.CreateBRVFromBankRequest(Rec);
+                    end;
+                }
+            }
         }
     }
 

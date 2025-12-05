@@ -1,5 +1,10 @@
 codeunit 50002 ReleaseVoucherDocument
 {
+
+    Permissions = tabledata "Gen. Journal Line" = rmid;
+
+    TableNo = Application;
+
     trigger OnRun()
     begin
 
@@ -43,6 +48,7 @@ codeunit 50002 ReleaseVoucherDocument
         UserSetup: Record "User Setup";
         LineNo: Integer;
         BRVNumberLbl: Label 'Bank Receipt Voucher %1 created', Comment = '%1-Bank receipt number';
+        ProspectiveStd: Record "Prospective Student";
     begin
         // Implementation for creating BRV from released voucher document
         UserSetup.Get(UserId);
@@ -124,6 +130,13 @@ codeunit 50002 ReleaseVoucherDocument
         GenJnlLine.Validate(Nature, VoucherHeader.Nature);
         GenJnlLine.Insert(true);
 
+        ProspectiveStd.Get(BankRequest.ProspectiveStudentID);
+        ProspectiveStd.SetFilter("Source Document No.", ProspectiveStd."Source Document No.");
+        if ProspectiveStd.FindFirst() then
+            ProspectiveStd."Application Fee Paid" := true;
+        ProspectiveStd.Modify(true);
+
+
         // PostedVoucherHeader.Init();
         // PostedVoucherHeader.TransferFields(BankRequest);
         // PostedVoucherHeader.Insert();
@@ -132,6 +145,34 @@ codeunit 50002 ReleaseVoucherDocument
 
     end;
 
+    procedure createApplicant(var Application: Record Application)
+    var
+        ProsptectiveStudent: Record "Prospective Student";
+        voucherHeader: Record "Voucher Header";
+    begin
+        ProsptectiveStudent.Get(ProsptectiveStudent.ProspectiveStudentID);
+        ProsptectiveStudent.SetFilter(ProspectiveStudentID, voucherHeader."ProspectiveStudentID");
+        if ProsptectiveStudent."Application Fee Paid" = false then
+            exit
+        else begin
+            Application.Init();
+            Application.ProspectiveStudentID := ProsptectiveStudent.ProspectiveStudentID;
+            Application."Student Name" := ProsptectiveStudent."Full Name";
+            Application."Date of Birth" := ProsptectiveStudent.DateOfBirth;
+            Application.Gender := ProsptectiveStudent.Gender;
+            Application."Phone Number" := ProsptectiveStudent.Phone;
+            Application."Email Address" := ProsptectiveStudent.Email;
+            Application."Preferred Program Code" := ProsptectiveStudent."Preferred Program Code";
+            Application."UTME Score" := ProsptectiveStudent.UTMEScore;
+            Application."JAMB Registration No" := ProsptectiveStudent.JAMBRegNo;
+            Application."Application Fee Paid" := true;
+            Application."Payment Reference" := ProsptectiveStudent."Source Document No.";
+            Application.Insert();
+        end;
+    end;
+
+
     var
         Text003: Label 'The approval process must be cancelled or completed to reopen this document.';
+
 }
