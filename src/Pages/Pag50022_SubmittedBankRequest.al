@@ -231,7 +231,7 @@ page 50022 "Submitted Bank Request"
                         UserSetup: Record "User Setup";
                         ReleaseVoucher: Codeunit "ReleaseVoucherDocument";
                     begin
-                        //Rec.TestField("Bank No.");
+                        Rec.TestField("Bank No.");
                         UserSetup.Get(UserId);
                         UserSetup.TestField("Bank Selector");
                         Rec.Status := Rec.Status::Released;
