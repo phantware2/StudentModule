@@ -58,7 +58,7 @@ codeunit 50002 ReleaseVoucherDocument
         VoucherHeader."Posting Date" := BankRequest."Posting Date";
         VoucherHeader.Validate(Nature, BankRequest.Nature);
         VoucherHeader."Responsibility Center" := BankRequest."Responsibility Center";
-        VoucherHeader."Document No." := BankRequest."Document No.";
+        VoucherHeader."Request No." := BankRequest."Document No.";
         VoucherHeader."Depositor Name" := BankRequest."Depositor Name";
         VoucherHeader."Paid Date" := BankRequest."Paid Date";
         VoucherHeader.Insert();
@@ -79,10 +79,58 @@ codeunit 50002 ReleaseVoucherDocument
             GenJnlLine."Document Type" := GenJnlLine."Document Type"::Refund;
         GenJnlLine."Journal Template Name" := 'BRV';
         GenJnlLine."Journal Batch Name" := 'BRV';
-        GenJnlLine.
+        GenJnlLine."Voucher Type" := VoucherHeader."Voucher Type"::BRV;
+        GenJnlLine.Validate("Account Type", GenJnlLine."Account Type"::Customer);
+        GenJnlLine.Validate("Account No.", BankRequest."Customer No.");
+        GenJnlLine."Source Document No." := BankRequest."Document No.";
+        GenJnlLine."Depositor Name" := BankRequest."Depositor Name";
+        GenJnlLine."Paid Date" := BankRequest."Paid Date";
+        GenJnlLine.ProspectiveStudentID := BankRequest.ProspectiveStudentID;
+        GenJnlLine."Receipt Amount" := BankRequest."Receipt Amount";
+        if BankRequest."Global Dimension 1 Code" <> '' then
+            GenJnlLine.Validate("Shortcut Dimension 1 Code", BankRequest."Global Dimension 1 Code");
+        if BankRequest."Global Dimension 2 Code" <> '' then
+            GenJnlLine.Validate("Shortcut Dimension 2 Code", BankRequest."Global Dimension 2 Code");
+        GenJnlLine.Narration := BankRequest.Narration;
+        if GenJnlLine."Account Type" = GenJnlLine."Account Type"::Customer then
+            if Format(VoucherHeader.Nature) <> '' then
+                GenJnlLine.Validate(Nature, BankRequest.Nature);
+        GenJnlLine.Insert(true);
+
+        // Bank
+        LineNo := LineNo + 10000;
+        GenJnlLine.Init();
+        GenJnlLine."Document No." := VoucherHeader."Document No.";
+        GenJnlLine."Posting Date" := VoucherHeader."Posting Date";
+        GenJnlLine."Document Type" := GenJnlLine."Document Type"::Payment;
+        if VoucherHeader.Nature = 2 then
+            GenJnlLine."Document Type" := GenJnlLine."Document Type"::Refund;
+        GenJnlLine."Line No." := LineNo;
+        GenJnlLine."Journal Template Name" := 'BRV';
+        GenJnlLine."Journal Batch Name" := 'BRV';
+        GenJnlLine."Voucher Type" := GenJnlLine."Voucher Type"::BRV;
+        GenJnlLine.Validate("Account Type", GenJnlLine."Account Type"::"Bank Account");
+        GenJnlLine.Validate("Account No.", BankRequest."Bank No.");
+
+        GenJnlLine."Source Document No." := VoucherHeader."Document No.";
+        GenJnlLine."Depositor Name" := VoucherHeader."Depositor Name";
+        GenJnlLine."Paid Date" := VoucherHeader."Paid Date";
+        GenJnlLine.Validate("Debit Amount", BankRequest."Debit Amount");
+        if BankRequest."Global Dimension 1 Code" <> '' then
+            GenJnlLine.Validate("Shortcut Dimension 1 Code", BankRequest."Global Dimension 1 Code");
+        if BankRequest."Global Dimension 2 Code" <> '' then
+            GenJnlLine.Validate("Shortcut Dimension 2 Code", BankRequest."Global Dimension 2 Code");
+        GenJnlLine.Narration := BankRequest.Narration;
+        GenJnlLine.Validate(Nature, VoucherHeader.Nature);
+        GenJnlLine.Insert(true);
+
+        PostedVoucherHeader.Init();
+        PostedVoucherHeader.TransferFields(BankRequest);
+        PostedVoucherHeader.Insert();
+        BankRequest.Delete();
+        GLSetup.Get()
+
     end;
-
-
 
     var
         Text003: Label 'The approval process must be cancelled or completed to reopen this document.';

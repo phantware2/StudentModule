@@ -201,6 +201,10 @@ table 50013 "Voucher Header"
             Caption = 'Receipt Date';
             DataClassification = CustomerContent;
         }
+        field(32; "Request No."; Code[20])
+        {
+            DataClassification = CustomerContent;
+        }
     }
     keys
     {
