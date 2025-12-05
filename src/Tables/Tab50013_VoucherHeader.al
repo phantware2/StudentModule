@@ -52,11 +52,25 @@ table 50013 "Voucher Header"
         {
             Caption = 'Receiving Bank';
             DataClassification = CustomerContent;
+
+            trigger OnValidate()
+            var
+                myInt: Integer;
+            begin
+                Rec.TestField(rec."Request Status", Rec."Request Status"::Open);
+            end;
         }
         field(8; "Receipt Amount"; Decimal)
         {
             Caption = 'Credit Amount';
             DataClassification = CustomerContent;
+
+            trigger OnValidate()
+            var
+                myInt: Integer;
+            begin
+                Rec.TestField(rec."Request Status", Rec."Request Status"::Open);
+            end;
         }
         field(9; "Customer No."; Code[20])
         {
@@ -68,6 +82,7 @@ table 50013 "Voucher Header"
             var
                 CustRec: Record Customer;
             begin
+                Rec.TestField(Rec."Request Status", Rec."Request Status"::Open);
                 if CustRec.Get(Rec."Customer No.") then
                     "Customer Name" := CustRec.Name;
             end;
@@ -89,6 +104,13 @@ table 50013 "Voucher Header"
             Caption = 'Global Dimension 2 Code';
             DataClassification = CustomerContent;
             TableRelation = "Dimension Value".Code where("Global Dimension No." = const(2));
+
+            trigger OnValidate()
+            var
+                myInt: Integer;
+            begin
+                Rec.TestField(rec."Request Status", Rec."Request Status"::Open);
+            end;
         }
         field(13; Narration; Text[100])
         {
@@ -105,6 +127,7 @@ table 50013 "Voucher Header"
             var
                 GLAccRec: Record "G/L Account";
             begin
+                Rec.TestField(Rec."Request Status", Rec."Request Status"::Open);
                 if GLAccRec.Get(Rec."Account No.") then
                     "Account Name" := GLAccRec.Name;
             end;

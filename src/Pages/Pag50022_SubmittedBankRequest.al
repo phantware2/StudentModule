@@ -22,20 +22,35 @@ page 50022 "Submitted Bank Request"
 
                     trigger OnValidate()
                     begin
-                        Rec.TestField(Rec.Status);
+                        Rec.TestField(rec."Request Status", Rec."Request Status"::Open);
                     end;
                 }
                 field("Customer No."; Rec."Customer No.")
                 {
                     ApplicationArea = All;
+
+                    trigger OnValidate()
+                    begin
+                        Rec.TestField(rec."Request Status", Rec."Request Status"::Open);
+                    end;
                 }
                 field("Customer Name"; Rec."Customer Name")
                 {
                     ApplicationArea = All;
+
+                    trigger OnValidate()
+                    begin
+                        Rec.TestField(rec."Request Status", Rec."Request Status"::Open);
+                    end;
                 }
                 field(ProspectiveStudentID; Rec.ProspectiveStudentID)
                 {
                     ApplicationArea = All;
+
+                    trigger OnValidate()
+                    begin
+                        Rec.TestField(rec."Request Status", Rec."Request Status"::Open);
+                    end;
                 }
                 field("Full Name"; Rec."Full Name")
                 {
@@ -45,6 +60,11 @@ page 50022 "Submitted Bank Request"
                 field(Nature; Rec.Nature)
                 {
                     ApplicationArea = All;
+
+                    trigger OnValidate()
+                    begin
+                        Rec.TestField(rec."Request Status", Rec."Request Status"::Open);
+                    end;
                 }
                 field("Bank No."; Rec."Bank No.")
                 {
@@ -54,22 +74,47 @@ page 50022 "Submitted Bank Request"
                 {
                     ApplicationArea = All;
                     Caption = 'Receiving Bank';
+
+                    trigger OnValidate()
+                    begin
+                        Rec.TestField(rec."Request Status", Rec."Request Status"::Open);
+                    end;
                 }
                 field("Depositor Name"; Rec."Depositor Name")
                 {
                     ApplicationArea = All;
+
+                    trigger OnValidate()
+                    begin
+                        Rec.TestField(rec."Request Status", Rec."Request Status"::Open);
+                    end;
                 }
                 field("Credit Amount"; Rec."Credit Amount")
                 {
                     ApplicationArea = All;
+
+                    trigger OnValidate()
+                    begin
+                        Rec.TestField(rec."Request Status", Rec."Request Status"::Open);
+                    end;
                 }
                 field("Paid Date"; Rec."Paid Date")
                 {
                     ApplicationArea = All;
+
+                    trigger OnValidate()
+                    begin
+                        Rec.TestField(rec."Request Status", Rec."Request Status"::Open);
+                    end;
                 }
                 field("Credit Date"; Rec."Credit Date")
                 {
                     ApplicationArea = All;
+
+                    trigger OnValidate()
+                    begin
+                        Rec.TestField(rec."Request Status", Rec."Request Status"::Open);
+                    end;
                 }
                 field(Status; Rec.Status)
                 {
@@ -79,15 +124,30 @@ page 50022 "Submitted Bank Request"
                 {
                     ApplicationArea = All;
                     Caption = 'Cost Center';
+
+                    trigger OnValidate()
+                    begin
+                        Rec.TestField(rec."Request Status", Rec."Request Status"::Open);
+                    end;
                 }
                 field("Global Dimension 2 Code"; Rec."Global Dimension 2 Code")
                 {
                     ApplicationArea = All;
                     Caption = 'Division';
+
+                    trigger OnValidate()
+                    begin
+                        Rec.TestField(rec."Request Status", Rec."Request Status"::Open);
+                    end;
                 }
                 field(Narration; Rec.Narration)
                 {
                     ApplicationArea = All;
+
+                    trigger OnValidate()
+                    begin
+                        Rec.TestField(rec."Request Status", Rec."Request Status"::Open);
+                    end;
                 }
             }
         }
@@ -224,26 +284,23 @@ page 50022 "Submitted Bank Request"
                     end;
                 }
             }
-            group(Vouchers)
+            action(CreateBRV)
             {
-                action(CreateBRV)
-                {
-                    Caption = 'Create Voucher';
-                    ApplicationArea = All;
-                    Image = Create;
-                    ToolTip = 'Create Bank Receipt Voucher from released Bank Request.';
-                    trigger OnAction()
-                    var
-                        UserSetup: Record "User Setup";
-                        ReleaseVoucher: Codeunit "ReleaseVoucherDocument";
-                    begin
-                        Rec.TestField("Bank No.");
-                        UserSetup.Get(UserId);
-                        UserSetup.TestField("Bank Selector");
-                        Rec.Status := Rec.Status::Released;
-                        ReleaseVoucher.CreateBRVFromBankRequest(Rec);
-                    end;
-                }
+                Caption = 'Create Voucher';
+                ApplicationArea = All;
+                Image = Create;
+                ToolTip = 'Create Bank Receipt Voucher from released Bank Request.';
+                trigger OnAction()
+                var
+                    UserSetup: Record "User Setup";
+                    ReleaseVoucher: Codeunit "ReleaseVoucherDocument";
+                begin
+                    Rec.TestField("Bank No.");
+                    UserSetup.Get(UserId);
+                    UserSetup.TestField("Bank Selector");
+                    Rec."Request Status" := Rec."Request Status"::Processed;
+                    ReleaseVoucher.CreateBRVFromBankRequest(Rec);
+                end;
             }
         }
     }
