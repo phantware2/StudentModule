@@ -214,6 +214,8 @@ page 50022 "Submitted Bank Request"
                         ReleaseVoucherDocument: Codeunit "ReleaseVoucherDocument";
                     begin
                         ReleaseVoucherDocument.PerformManualReopen(Rec);
+                        Rec."Request Status" := Rec."Request Status"::Open;
+                        Rec.Modify();
                     end;
                 }
             }

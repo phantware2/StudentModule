@@ -52,7 +52,6 @@ table 50013 "Voucher Header"
         {
             Caption = 'Receiving Bank';
             DataClassification = CustomerContent;
-            Editable = false;
 
             trigger OnValidate()
             var
