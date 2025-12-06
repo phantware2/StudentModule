@@ -89,7 +89,7 @@ page 50022 "Submitted Bank Request"
                         Rec.TestField(rec."Request Status", Rec."Request Status"::Open);
                     end;
                 }
-                field("Credit Amount"; Rec."Credit Amount")
+                field("Receipt Amount"; Rec."Receipt Amount")
                 {
                     ApplicationArea = All;
 

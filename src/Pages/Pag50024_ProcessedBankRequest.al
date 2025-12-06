@@ -36,7 +36,7 @@ page 50024 "Processed Bank Request"
                     ApplicationArea = All;
                     Caption = 'Prospective Student Full Name';
                 }
-                field("Credit Amount"; Rec."Credit Amount")
+                field("Receipt Amount"; Rec."Receipt Amount")
                 {
                     ApplicationArea = All;
                 }

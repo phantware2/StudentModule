@@ -50,7 +50,7 @@ page 50020 "Bank Request"
                 {
                     ApplicationArea = All;
                 }
-                field("Credit Amount"; Rec."Credit Amount")
+                field("Receipt Amount"; Rec."Receipt Amount")
                 {
                     ApplicationArea = All;
                 }
