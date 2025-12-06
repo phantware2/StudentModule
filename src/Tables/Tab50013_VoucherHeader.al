@@ -52,6 +52,7 @@ table 50013 "Voucher Header"
         {
             Caption = 'Receiving Bank';
             DataClassification = CustomerContent;
+            Editable = false;
 
             trigger OnValidate()
             var
@@ -220,6 +221,16 @@ table 50013 "Voucher Header"
         {
             Caption = 'Bank No.';
             DataClassification = CustomerContent;
+
+            TableRelation = "Bank Account";
+            trigger OnValidate()
+            var
+                BankAcc: Record "Bank Account";
+                UserSetup: Record "User Setup";
+            begin
+                if BankAcc.get("Bank No.") then
+                    "Bank Name" := BankAcc.Name;
+            end;
         }
         field(30; "Credit Date"; Date)
         {

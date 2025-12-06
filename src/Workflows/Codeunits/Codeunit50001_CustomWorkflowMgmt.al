@@ -135,7 +135,7 @@ codeunit 50001 "Custom Workflow Mgmt"
             Database::"Voucher Header":
                 begin
                     If VoucherHeader.Get(ApprovalEntry."Document No.") then begin
-                        VoucherHeader.Validate(Status, VoucherHeader.Status::Cancelled);
+                        VoucherHeader.Validate(Status, VoucherHeader.Status::Open);
                         VoucherHeader.Modify(true);
                     end;
                 end;
