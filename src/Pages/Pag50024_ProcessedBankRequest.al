@@ -3,7 +3,7 @@ page 50024 "Processed Bank Request"
 {
     PageType = Card;
     SourceTable = "Voucher Header";
-    SourceTableView = where(Status = filter(Released));
+    SourceTableView = where("Request Status" = filter(Processed));
 
     layout
     {

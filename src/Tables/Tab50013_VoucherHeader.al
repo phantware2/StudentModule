@@ -21,7 +21,7 @@ table 50013 "Voucher Header"
         {
             Caption = 'Status';
             DataClassification = CustomerContent;
-            OptionMembers = Open,"Pending Approval",Submitted,Released,Cancelled;
+            OptionMembers = Open,"Pending Approval",Released;
             // Editable = false;
         }
 

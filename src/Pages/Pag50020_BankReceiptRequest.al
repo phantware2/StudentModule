@@ -2,7 +2,7 @@ page 50020 "Bank Request"
 {
     PageType = Card;
     SourceTable = "Voucher Header";
-    SourceTableView = where(Status = filter(Open | Cancelled));
+    SourceTableView = where("Request Status" = filter(Open));
     RefreshOnActivate = true;
 
     layout

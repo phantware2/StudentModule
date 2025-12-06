@@ -2,7 +2,7 @@ page 50022 "Submitted Bank Request"
 {
     PageType = Card;
     SourceTable = "Voucher Header";
-    SourceTableView = where(Status = filter(Submitted | "Pending Approval"));
+    SourceTableView = where("Request Status" = filter("Pending Processing"));
     RefreshOnActivate = true;
 
     layout

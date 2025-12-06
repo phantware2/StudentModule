@@ -5,7 +5,7 @@ page 50023 "Processed Bank Requests"
     UsageCategory = Lists;
     SourceTable = "Voucher Header";
     CardPageId = "Processed Bank Request";
-    SourceTableView = where(Status = filter(Released));
+    SourceTableView = where("Request Status" = filter(Processed));
     Editable = false;
 
     layout

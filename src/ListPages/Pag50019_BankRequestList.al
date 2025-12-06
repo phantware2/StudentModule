@@ -6,7 +6,7 @@ page 50019 "Bank Requests"
     SourceTable = "Voucher Header";
     CardPageId = "Bank Request";
     Editable = false;
-    SourceTableView = where(Status = filter(Open | Cancelled));
+    SourceTableView = where("Request Status" = filter(Open));
 
     layout
     {
